@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout::head"></head>
+    <body>
+        <header th:replace="layout/layout::header"></header>
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+
+                    <div th:object="${encuesta}" th:remove="tag">
+                        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                            <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    <form th:action="@{/formEncuesta}" th:object="${encuesta}" method="post">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" th:text="'Paciente'"></label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Andres Guzman">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" disabled>Síntomas del Paciente: </label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{nombreEncuesta}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('nombreEncuesta')}" th:errors="*{nombreEncuesta}"></small>     
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Antecedentes Familiares: </label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{signosVitalesEncuesta}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('signosVitalesEncuesta')}" th:errors="*{signosVitalesEncuesta}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Alergia: </label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{antecedentesEncuesta}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('antecedentesEncuesta')}" th:errors="*{antecedentesEncuesta}"></small>     
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Diagnostico de la evaluacion: </label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{diagnosticoEncuesta}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('diagnosticoEncuesta')}" th:errors="*{diagnosticoEncuesta}"></small>
+                            </div>
+                        </div>
+
+                        <!--                        <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Fecha</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" class="form-control" th:field="*{createAtEncuesta}" th:errorclass="'form-control alert-danger'"/>
+                                                        <small class="form text text-danger" th:if="${#fields.hasErrors('createAtEncuesta')}" th:errors="*{createAtEncuesta}"></small>
+                                                    </div>
+                                                </div>
+                        -->
+                        <div class="form-group row">
+                            <label for="observacionesEncuesta" class="col-sm-2 col-form-label">Observaciones: </label>
+                            <div class="col-sm-6">
+                                <textarea th:field="*{observacionesEncuesta}" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Crear Diagnostico" class="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                        <input type="hidden" th:field="*{idEncuesta}" />
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- -->
+
+            <!-- -->
+
+
+
+        </div>
+    </body>
+</html>

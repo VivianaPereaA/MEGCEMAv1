@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<!--
+<a href="#" data-activates="slide-out" class="btn btn-primary p-3 button-collapse"><i
+    class="fas fa-bars"></i></a>
+
+<div id="slide-out" class="side-nav fixed">
+  <ul class="custom-scrollbar">
+
+    <li>
+      <div class="logo-wrapper waves-light">
+        <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png"
+            class="img-fluid flex-center"></a>
+      </div>
+    </li>
+
+    <li>
+      <ul class="social">
+        <li><a href="#" class="icons-sm fb-ic"><i class="fab fa-facebook-f"> </i></a></li>
+        <li><a href="#" class="icons-sm pin-ic"><i class="fab fa-pinterest"> </i></a></li>
+        <li><a href="#" class="icons-sm gplus-ic"><i class="fab fa-google-plus-g"> </i></a></li>
+        <li><a href="#" class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a></li>
+      </ul>
+    </li>
+
+    <li>
+      <form class="search-form" role="search">
+        <div class="form-group md-form mt-0 pt-1 waves-light">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </li>
+
+    <li>
+      <ul class="collapsible collapsible-accordion">
+        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-chevron-right"></i> Submit
+            blog<i class="fas fa-angle-down rotate-icon"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="#" class="waves-effect">Submit listing</a>
+              </li>
+              <li><a href="#" class="waves-effect">Registration form</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-hand-pointer"></i>
+            Instruction<i class="fas fa-angle-down rotate-icon"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="#" class="waves-effect">For bloggers</a>
+              </li>
+              <li><a href="#" class="waves-effect">For authors</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-eye"></i> About<i
+              class="fas fa-angle-down rotate-icon"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="#" class="waves-effect">Introduction</a>
+              </li>
+              <li><a href="#" class="waves-effect">Monthly meetings</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-envelope"></i> Contact me<i
+              class="fas fa-angle-down rotate-icon"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="#" class="waves-effect">FAQ</a>
+              </li>
+              <li><a href="#" class="waves-effect">Write a message</a>
+              </li>
+              <li><a href="#" class="waves-effect">FAQ</a>
+              </li>
+              <li><a href="#" class="waves-effect">Write a message</a>
+              </li>
+              <li><a href="#" class="waves-effect">FAQ</a>
+              </li>
+              <li><a href="#" class="waves-effect">Write a message</a>
+              </li>
+              <li><a href="#" class="waves-effect">FAQ</a>
+              </li>
+              <li><a href="#" class="waves-effect">Write a message</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+  <div class="sidenav-bg rgba-blue-strong"></div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                    </li>
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">loser</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            Content area...
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+  <ul class="nav flex-column text-white w-100">
+    <a href="#" class="nav-link h3 text-white my-2">
+      Side Nav
+    </a>
+    <li href="#" class="nav-link">
+      <span class="mx-2">Home</span>
+    </li>
+    <li href="#" class="nav-link">
+      <span class="mx-2">About</span>
+    </li>
+    <li href="#" class="nav-link">
+      <span class="mx-2">Contact</span>
+    </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+
+
+    <nav id="sidebar">
+        ...
+    </nav>
+
+
+    <div id="content">
+
+    </div>
+
+</div>   
+
+
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+-->
+
+<!--
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <i class='bx bx-plus-medical'></i>
+                    <div class="logo_name">MEGCEMA</div>  
+                </div>
+                <i class='bx bx-menu'></i>
+            </div>
+            <ul class="nav_list">
+                <li>
+                    <i class='bx bx-search-alt'></i>
+                    <input type="text" placeholder="Busqueda...">     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user' ></i>
+                        <span class="links_name">Usuario</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-label'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>     
+                       <span class="tooltip">Dashboard</span> 
+                </li>
+            </ul>
+            <div class="profile-content">
+                <div class="profile">
+                    <div class="profile-details">
+                               <img src="" alt=""> 
+                        <div class="name_job">
+                        <div class="name">Viviana Perea</div>
+                        <div class="job">Recepcionista</div>
+                        </div>
+                    </div>
+                   <i class='bx bx-log-out' id="log_out"></i> 
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+-->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SideBar</title>
+        <link rel="stylesheet" href="style.css"
+        <script src="http://kit.fontawesome.com/b99e675b6e.js"></script>  
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <h2>sIDEBAR</h2>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                    <li><a href="#"><i class="fas fa-home">Home</i></a></li>
+                </ul>
+                <div class="social_media">
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="header">Bienvenido</div>
+                <div class="info"></div>
+            </div>
+        </div>
+    </body>
+</html>

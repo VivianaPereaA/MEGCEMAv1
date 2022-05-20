@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout::header"></header>
+
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+                    
+                <h4 class="card-title">
+                    <a th:href="@{/formTurno}" class="btn btn-primary btn-xs">Crear Turno</a>
+                </h4>     
+                    
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            
+                            <th>fecha</th>
+                            <th>hora de inicio</th>
+                            <th>hora de fin</th>
+                            <th>editar</th>
+                            <th>Ver Detalle</th>
+                            <th>eliminar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="turno: ${turnos}">
+                            
+                            <td><a class="btn btn-primary btn-xs"
+                            th:href="@{/verTurno/} + ${turno.idTurno}" th:text="${turno.idTurno}"></a></td>
+                            <td th:text="${turno.fechaTurno}"></td>
+                            <td th:text="${turno.horaInicioTurno}"></td>
+                            <td th:text="${turno.horaFinTurno}"></td>
+                            
+                            <td><a class="btn btn-primary btn-s" th:href="@{/formTurno/} + ${turno.idTurno}" th:text="'editar'"></a></td>
+                            <td><a class="btn btn-warning btn-s" th:href="@{/verPaciente/} + ${turno.idTurno}" th:text="'Ver Detalle'"></a></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                    <nav th:replace="paginator-nav :: paginator"></nav>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+
+    </body>
+</html>

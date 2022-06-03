@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout::head"></head>
+    <body>
+        <header th:replace="layout/layout::header"></header>
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+
+                    <div th:object="${cita}" th:remove="tag">
+                        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                            <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    <form th:action="@{/formCitas}" th:object="${cita}" method="post">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Medico</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{medico}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('medico')}" th:errors="*{medico}"></small>     
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Motivo de la Cita</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{motivoCita}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('motivoCita')}" th:errors="*{motivoCita}"></small>
+                            </div>
+                        </div>
+
+                        
+                                      <div class="form-group row">
+                                            <label  class="col-sm-2 col-form-label"
+                                                    th:text="'Fecha de la Cita: '"></label>
+                                            <div class="col-sm-6">
+                                                <input type="date" id="fechaCita" class="form-control"/>
+                                                <div id="fechaCitaError"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label"
+                                                   th:text="'Hora de Inicio'"></label>
+                                            <div class="col-sm-6">
+                                                <input type="time" class="form-control" id="citaInicio"/>
+                                                <div id="citaInicioError"></div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="form-group row">
+                                            <label  class="col-sm-2 col-form-label"
+                                                    th:text="'Hora de Finalizacion'"></label>
+                                            <div class="col-sm-6">
+                                                <input type="time" id="citaFin" class="form-control"/>
+                                                <div id="citaFinError"></div>
+                                            </div>
+                                        </div>
+                                            
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Registrar Cita" class="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                        <input type="hidden" th:field="*{idCita}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

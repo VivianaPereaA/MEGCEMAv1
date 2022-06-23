@@ -56,7 +56,7 @@ public class Paciente implements Serializable {
 
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
-
+    
 
     public Paciente() {
         facturas = new ArrayList<Factura>();

@@ -3,6 +3,7 @@ package com.tii.springboot.app.controller;
 
 import com.tii.springboot.app.models.entity.AdminCita;
 import com.tii.springboot.app.models.service.IAdminCitaService;
+import com.tii.springboot.app.models.service.IPacienteService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.Map;
 import javax.validation.Valid;
@@ -32,8 +33,8 @@ public class AdminCitaController {
     public String listarAdminCita(@RequestParam(name="page", defaultValue ="0") int page, Model model) {
         
         Pageable pageRequest=PageRequest.of(page, 5);
-        Page<AdminCita> adminCitas =adminCitaService.findAllAdminCita(pageRequest);
-        
+        Page<AdminCita> adminCitas = adminCitaService.findAllAdminCita(pageRequest);
+                
         PageRender<AdminCita> pageRender = new PageRender<>("/listarAdminCita", adminCitas);
         
         model.addAttribute("titulo", "Listado de Citas");

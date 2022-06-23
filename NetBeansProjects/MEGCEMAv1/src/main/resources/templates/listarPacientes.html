@@ -27,7 +27,8 @@ and open the template in the editor.
                                 <th>nombre</th>
                                 <th>apellido</th>
                                 <!--<th>email</th>-->
-                                <th>fecha de nacimiento</th> 
+                                <th>fecha de nacimiento</th>
+                                <th>item</th>
                                 <!--  <th>Registrar Cita</th>-->
 
                                 <!--    <th>editar</th>-->
@@ -46,7 +47,7 @@ and open the template in the editor.
                                 <td th:text="${paciente.apellido}"></td>
                                 <!--<td th:text="${paciente.email}"></td>-->
                                 <td th:text="${paciente.createAt}"></td>
-
+                                <td><a class="btn btn-success btn-s" th:href="@{'/factura/formFactura/' + ${paciente.id}}" th:text="'Crear Factura'"></a></td>
                                 <!-- <td><a class="btn btn-primary btn-s" th:href="@{/formAdminCita/} + ${paciente.id}" th:text="'Registrar nueva cita'" ></a></td> -->
                                 <!--    <td><a class="btn btn-success btn-s" th:href="@{'/factura/formFactura/' + ${paciente.id}}" th:text="'Crear Factura'"></a></td>-->
 

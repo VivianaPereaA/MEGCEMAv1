@@ -54,4 +54,5 @@ public class AdminCitaServiceImpl implements IAdminCitaService {
         adminCitaDao.deleteById(idAdminCita);
     }
     
+    
 }

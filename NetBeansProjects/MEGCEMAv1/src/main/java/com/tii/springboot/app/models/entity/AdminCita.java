@@ -35,20 +35,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "adminCitas")
 public class AdminCita implements Serializable {
 
-    public AdminCita() {
-    }
-
-    public AdminCita(Long idAdminCita, String nombreCita, Date adminCitaFecha, Date adminCitaHora, String horaCita, String adminCitaMotivo, String adminCitaObservacion, Paciente paciente, EstadoCita estadoCita) {
-        this.idAdminCita = idAdminCita;
-        this.nombreCita = nombreCita;
-        this.adminCitaFecha = adminCitaFecha;
-        this.adminCitaHora = adminCitaHora;
-        this.horaCita = horaCita;
-        this.adminCitaMotivo = adminCitaMotivo;
-        this.adminCitaObservacion = adminCitaObservacion;
-        this.paciente = paciente;
-        this.estadoCita = estadoCita;
-    }
+//    public AdminCita() {
+//    }
+//
+//    public AdminCita(Long idAdminCita, String nombreCita, Date adminCitaFecha, Date adminCitaHora, String horaCita, String adminCitaMotivo, String adminCitaObservacion, Paciente paciente, EstadoCita estadoCita) {
+//        this.idAdminCita = idAdminCita;
+//        this.nombreCita = nombreCita;
+//        this.adminCitaFecha = adminCitaFecha;
+//        this.adminCitaHora = adminCitaHora;
+//        this.horaCita = horaCita;
+//        this.adminCitaMotivo = adminCitaMotivo;
+//        this.adminCitaObservacion = adminCitaObservacion;
+//        this.paciente = paciente;
+//        this.estadoCita = estadoCita;
+//    }
 
     
     

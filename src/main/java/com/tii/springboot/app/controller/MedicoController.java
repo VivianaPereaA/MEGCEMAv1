@@ -37,7 +37,7 @@ public class MedicoController {
         
         PageRender<Medico> pageRender = new PageRender<>("/listar", medicos);
         
-        model.addAttribute("titulo", "Listado de Usuarios");
+        model.addAttribute("titulo", "Listado de Medicos");
         model.addAttribute("medicos", medicos);
         model.addAttribute("page", pageRender);
 
@@ -48,7 +48,7 @@ public class MedicoController {
     public String crear(Map<String, Object> model) {
         Medico medico = new Medico();
         model.put("medico", medico);
-        model.put("titulo", "Formulario del Usuario");
+        model.put("titulo", "Formulario del Medico");
         return "form";
     }
 
@@ -59,15 +59,15 @@ public class MedicoController {
         if(id>0){
             medico= medicoService.findOne(id);
             if (medico == null) {
-            flash.addFlashAttribute("error", "El ID del Usuario no existe en la base de datos");
+            flash.addFlashAttribute("error", "El ID del Medico no existe en la base de datos");
             return "redirect:/listar";    
             }
         } else{
-            flash.addFlashAttribute("error", "El ID del Usuario no puede ser 0");
+            flash.addFlashAttribute("error", "El ID del Medico no puede ser 0");
             return "redirect:/listar";
         }
         model.put("medico", medico);
-        model.put("titulo", "Formulario del Usuario");
+        model.put("titulo", "Formulario del Medico");
               
         return "form";
     }
@@ -75,10 +75,10 @@ public class MedicoController {
     @RequestMapping(value = "/form", method = RequestMethod.POST)
     public String guardar(@Valid Medico medico, BindingResult result, Model model,RedirectAttributes flash ,SessionStatus status) {
         if (result.hasErrors()) {
-            model.addAttribute("titulo", "Formulario del Usuario");
+            model.addAttribute("titulo", "Formulario del Medico");
             return "form";
         }
-        String mensajeFlash= (medico.getId() != null)? "Usuario editado con exito!":"Usuario creado con exito!";
+        String mensajeFlash= (medico.getId() != null)? "Medico editado con exito!":"Medico creado con exito!";
         
         medicoService.save(medico);
         status.setComplete();
@@ -92,7 +92,7 @@ public class MedicoController {
         
         if(id>0){
             medicoService.eliminar(id);
-            flash.addFlashAttribute("success", "Usuario eliminado con exito!");
+            flash.addFlashAttribute("success", "Medico eliminado con exito!");
 
         }
               

@@ -20,31 +20,30 @@ and open the template in the editor.
                 <div class="card-body">
                     
                 <h4 class="card-title">
-                    <a th:href="@{/form}" class="btn btn-primary btn-xs">Crear Medico</a>
+                    <a th:href="@{/formTratamiento}" class="btn btn-primary btn-xs">Registrar Tratamiento</a>
                 </h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             
-                            <th>nombre</th>
-                            <th>apellido</th>
-                            <th>colegiatura</th>
-                            <th>telefono</th>
-                            <th>registrar turno</th>
-                            <th>Acciones para el Medico</th>
+                            <th>Tipo de enfermedad</th>
+                            <th>Enfermedad del paciente</th>
+                            <th>Medicamentos</th>
+                            <th>Cantidad</th>
+                        
+                            <th>Acciones para el Usuario</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="medico: ${medicos}">
+                        <tr th:each="tratamiento: ${tratamientos}">
                             
-                            <td th:text="${medico.nombre}"></td>
-                            <td th:text="${medico.apellido}"></td>
-                            <td th:text="${medico.colegiatura}"></td>
-                            <td th:text="${medico.telefono}"></td>
-                            <td><a class="btn btn-success btn-s" th:href="@{'/formTurno/' + ${medico.id}}" th:text="'Registrar Turno'"></a></td>           
-                            <td><a class="btn btn-primary btn-s" th:href="@{/form/} + ${medico.id}" th:text="'Modificar'"></a></td>
-                             <!--<td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${medico.id}" th:text="'Desocupado'" onclick="return confirm('¿Quieres llamar al siguiente paciente?');"></a></td>-->
+                            <td th:text="${tratamiento.tipoEnfermedad}"></td>
+                            <td th:text="${tratamiento.enfermedadPaciente}"></td>
+                            <td th:text="${tratamiento.Medicamentos}"></td>
+                            <td th:text="${tratamiento.cantidadDosis}"></td>
+                            <td><a class="btn btn-primary btn-s" th:href="@{/formTratamiento/} + ${tratamiento.id}" th:text="'Modificar tratamiento'"></a></td>
+                            <td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${tratamiento.id}" th:text="'Eliminar tratamiento'" onclick="return confirm('¿Estas seguro que deseas eliminar este tratamiento?');"></a></td>
 
                         </tr>
                     </tbody>

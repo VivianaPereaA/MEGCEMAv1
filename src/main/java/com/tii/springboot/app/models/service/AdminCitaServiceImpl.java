@@ -53,5 +53,10 @@ public class AdminCitaServiceImpl implements IAdminCitaService {
     public void eliminarAdminCita(Long idAdminCita) {
         adminCitaDao.deleteById(idAdminCita);
     }
+
+    @Override
+    public List<AdminCita> findbyFecha(String fecha1, String fecha2) {
+        return adminCitaDao.findbyFecha(fecha1, fecha2);
+    }
     
 }

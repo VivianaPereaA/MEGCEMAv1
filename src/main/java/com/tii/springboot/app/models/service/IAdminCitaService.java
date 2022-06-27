@@ -26,4 +26,6 @@ public interface IAdminCitaService {
     public AdminCita findOneAdminCita(Long idAdminCita);
 
     public void eliminarAdminCita(Long idAdminCita);
+    
+    public List<AdminCita> findbyFecha(String fecha1, String fecha2);
 }

@@ -32,7 +32,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author VIVIANA CRISTINA
  */
 @Entity
-@Table(name = "adminCitas")
+@Table(name = "admin_citas")
 public class AdminCita implements Serializable {
 
     public AdminCita() {
@@ -50,8 +50,6 @@ public class AdminCita implements Serializable {
         this.estadoCita = estadoCita;
     }
 
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idAdminCita")
@@ -63,31 +61,31 @@ public class AdminCita implements Serializable {
     @NotNull
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "adminCitaFecha")
+    @Column(name = "admin_cita_fecha")
     private Date adminCitaFecha;
 
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
-    @Column(name = "adminCitaHora")
+    @Column(name = "admin_cita_hora")
     private Date adminCitaHora;
 
-    @Column(name = "horaCita")
+    @Column(name = "hora_cita")
     private String horaCita;
 
     @NotEmpty
     @Size(min = 2, max = 255)
-    @Column(name = "adminCitaMotivo")
+    @Column(name = "admin_cita_motivo")
     private String adminCitaMotivo;
 
-    @Column(name = "adminCitaObservacion")
+    @Column(name = "admin_cita_observacion")
     private String adminCitaObservacion;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paciente_id")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "paciente_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente" )
     private Paciente paciente;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estado_cita_id")
     private EstadoCita estadoCita;

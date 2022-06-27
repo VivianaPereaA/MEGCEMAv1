@@ -54,12 +54,24 @@ public class Paciente implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<AdminCita> adminCita;
+    
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
 
-
-    public Paciente() {
+    
+    public Paciente(Long id, String nombre, String apellido, String email, Date createAt) {
+        this.id = id;
+        this.nombre = nombre;
+        this. apellido = apellido;
+        this.email = email;
+        this.createAt = createAt;
         facturas = new ArrayList<Factura>();
+    }
+    
+    public Paciente(){
+        super();
     }
 
     public Long getId() {
@@ -114,6 +126,14 @@ public class Paciente implements Serializable {
         facturas.add(factura);
     }
     
+        public List<AdminCita> getAdminCita() {
+        return adminCita;
+    }
+
+    public void setAdminCita(List<AdminCita> adminCita) {
+        this.adminCita = adminCita;
+    }
+
     
 
     private static final long serialVersionUID = 1l;

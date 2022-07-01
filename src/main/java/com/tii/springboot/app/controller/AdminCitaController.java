@@ -5,14 +5,12 @@ import com.tii.springboot.app.models.entity.AdminCita;
 import com.tii.springboot.app.models.service.IAdminCitaService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.Map;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,7 +43,7 @@ public class AdminCitaController {
 
     @RequestMapping(value = "/formAdminCita")
     public String crearAdminCita(Map<String, Object> model) {
-        AdminCita adminCita = new AdminCita();
+        AdminCita adminCita = new AdminCita();               
         model.put("adminCita", adminCita);
         model.put("titulo", "Formulario de las citas");
         return "formAdminCita";
@@ -71,21 +69,28 @@ public class AdminCitaController {
         return "formAdminCita";
     }
 
-    @RequestMapping(value = "/formAdminCita", method = RequestMethod.POST)
-    public String guardarAdminCita(@Valid AdminCita adminCita, BindingResult result, Model model,RedirectAttributes flash ,SessionStatus status) {
-        if (result.hasErrors()) {
-            model.addAttribute("titulo", "Formulario de las citas");
-            return "formAdminCita";
-        }
-        String mensajeFlash= (adminCita.getIdAdminCita()!= null)? "Cita editada con exito!":"Cita creada con exito!";
-        adminCita.toString();
-        System.out.println("impreso"+ adminCita.toString());
-        adminCitaService.saveAdminCita(adminCita);
-        status.setComplete();
-        flash.addFlashAttribute("success", mensajeFlash);
-        //falta el /
-        return "redirect:listarAdminCita";
-    }
+//    @RequestMapping(value = "/formAdminCita", method = RequestMethod.POST)
+//    public String guardarAdminCita(@Valid AdminCita adminCita, BindingResult result, Model model,RedirectAttributes flash ,SessionStatus status) {
+//       
+//        if (result.hasErrors()) {
+//            model.addAttribute("titulo", "Formulario de las citas");
+//            return "formAdminCita";
+//        }
+//        
+//        String mensajeFlash = (adminCita.getIdAdminCita()!= null)? "Cita editada con exito!":"Cita creada con exito!";
+//        
+//        adminCita.toString();
+//        
+//        System.out.println("impreso"+ adminCita.toString());
+//        
+//        adminCitaService.saveAdminCita(adminCita);
+//        
+//        status.setComplete();
+//        
+//        flash.addFlashAttribute("success", mensajeFlash);
+//        //falta el /
+//        return "redirect:listarAdminCita";
+//    }
     
     @RequestMapping(value="/eliminar/{idAdminCita}")
     public String eliminarAdminCita(@PathVariable(value="idAdminCita") Long idAdminCita, RedirectAttributes flash){

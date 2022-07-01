@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,18 +26,19 @@ public class EstadoUsuario implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="est_usu_id")
-    private Integer estUsuId;
+    @Column(name="id_est_us")
+    private Integer idestUsu;
     
     @Column(name="est_usu_nombre")
     private String estUsuNombre;
+    
 
-    public Integer getEstUsuId() {
-        return estUsuId;
+    public Integer getIdestUsu() {
+        return idestUsu;
     }
 
-    public void setEstUsuId(Integer estUsuId) {
-        this.estUsuId = estUsuId;
+    public void setIdestUsu(Integer idestUsu) {
+        this.idestUsu = idestUsu;
     }
 
     public String getEstUsuNombre() {

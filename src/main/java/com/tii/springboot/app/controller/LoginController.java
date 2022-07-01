@@ -31,7 +31,7 @@ public class LoginController {
         
         if(logout != null){
             model.addAttribute("success", "Ha cerrado sesion correctamente");
-        }
+        }   
         
         return "login";
     }

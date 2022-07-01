@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 @Controller
-//@SessionAttributes("agenda")
+@SessionAttributes("agenda")
 public class AgendaController {
     
     @Autowired
@@ -27,7 +27,7 @@ public class AgendaController {
     
     @RequestMapping(value = "/listarAgenda", method = RequestMethod.GET)
     public String listarAgenda(
-            @RequestParam(name="page", defaultValue ="0") int page, 
+            @RequestParam(name="page", defaultValue ="0") int page,
             Model model,
             String fecha1,
             String fecha2
@@ -48,8 +48,8 @@ public class AgendaController {
         }else{
             model.addAttribute("adminCitas", adminCitas);
         }
-            
-        model.addAttribute("titulo", "Visualizar Agenda");
+     
+        model.addAttribute("titulo", "Visualizar Agenda");      
         model.addAttribute("page", pageRender);
 
         return "listarAgenda";

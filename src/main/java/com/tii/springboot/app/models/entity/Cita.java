@@ -27,17 +27,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name= "citas")
 public class Cita implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "cita_id")
     private Long citaId;
-    
-    //@NotNull
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="paciente_id")
-    private Paciente paciente;
     
     //@NotNull
     @JsonIgnore
@@ -73,6 +67,10 @@ public class Cita implements Serializable {
     @Size(min=2, max=255)
     @Column(name= "cita_motivo")
     private String citaMotivo;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente" )
+    private Paciente paciente;
     
     @Column(name= "cita_observacion")
     private String citaObservacion;
@@ -152,5 +150,12 @@ public class Cita implements Serializable {
         this.citaMotivo = citaMotivo;
     }
     
+    public String getCitaObservacion() {
+        return citaObservacion;
+    }
+
+    public void setCitaObservacion(String citaObservacion) {
+        this.citaObservacion = citaObservacion;
+    }
     
 }

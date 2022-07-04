@@ -17,14 +17,39 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
           
-        http.authorizeRequests().
-               antMatchers("/css/**","/js/**","/img/**","/").permitAll()
-        .anyRequest().permitAll()//si es autenticado .authenticated()
+        http.authorizeRequests()
+            .antMatchers("/css/**","/js/**","/img/**","/")
+            .permitAll()
+        .anyRequest()
+            .permitAll()
         .and()
-          .formLogin().loginPage("/login")
-                .permitAll()
-          .and()
-          .logout().permitAll();
+          .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/principal")
+            .failureUrl("/login?error=true")
+            .permitAll()
+        .and()
+            .logout()
+            .logoutSuccessUrl("/login?logout=true")
+            .invalidateHttpSession(true)
+            .permitAll();
+
+//            http.authorizeRequests()
+//                      .antMatchers("/login")
+//                          .permitAll()
+//                      .antMatchers("/**")
+//                          .hasAnyRole("USER")
+//                      .and()
+//                          .formLogin()
+//                          .loginPage("/login")
+//                          .defaultSuccessUrl("/hola")
+//                          .failureUrl("/login?error=true")
+//                          .permitAll()
+//                      .and()
+//                          .logout()
+//                          .logoutSuccessUrl("/login?logout=true")
+//                          .invalidateHttpSession(true)
+//                          .permitAll();
     }
     
     @Bean

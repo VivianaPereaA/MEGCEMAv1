@@ -52,12 +52,12 @@ public class AdminCita implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAdminCita")
+    @Column(name = "id_admin_cita")
     private Long idAdminCita;
 
     @NotEmpty
     private String nombreCita;
-
+ 
     @NotNull
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -80,8 +80,6 @@ public class AdminCita implements Serializable {
     @Column(name = "admin_cita_observacion")
     private String adminCitaObservacion;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "paciente_id")
     @ManyToOne(optional = false)
     @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente" )
     private Paciente paciente;

@@ -1,7 +1,6 @@
 package com.tii.springboot.app.models.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 //import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,6 +26,17 @@ public class Paciente implements Serializable {
 
     public String nombreCompleto() {
         return this.nombre + " " + this.apellido;
+    }
+
+    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas, List<Cita> cita) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.createAt = createAt;
+        this.adminCita = adminCita;
+        this.facturas = facturas;
+        this.cita = cita;
     }
 
     @Id
@@ -59,16 +68,9 @@ public class Paciente implements Serializable {
     
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
-
     
-    public Paciente(Long id, String nombre, String apellido, String email, Date createAt) {
-        this.id = id;
-        this.nombre = nombre;
-        this. apellido = apellido;
-        this.email = email;
-        this.createAt = createAt;
-        facturas = new ArrayList<Factura>();
-    }
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Cita> cita;
     
     public Paciente(){
         super();
@@ -132,6 +134,14 @@ public class Paciente implements Serializable {
 
     public void setAdminCita(List<AdminCita> adminCita) {
         this.adminCita = adminCita;
+    }
+    
+    public List<Cita> getCita() {
+        return cita;
+    }
+
+    public void setCita(List<Cita> cita) {
+        this.cita = cita;
     }
 
     

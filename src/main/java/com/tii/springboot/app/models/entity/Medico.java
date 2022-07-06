@@ -27,7 +27,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "medicos")
 public class Medico implements Serializable {
 
+    public Medico(Long id, String nombre, String apellido, String email, Date createAt, String colegiatura, String telefono, List<Turno> turnos, List<AdminCita> adminCita) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.createAt = createAt;
+        this.colegiatura = colegiatura;
+        this.telefono = telefono;
+        this.turnos = turnos;
+        this.adminCita = adminCita;
+    }
+    
     @Id
+    @Column(name = "id_medico")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -63,6 +76,9 @@ public class Medico implements Serializable {
 
     @OneToMany(mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Turno> turnos;
+    
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    private List<AdminCita> adminCita;
 
     public Medico() {
         turnos = new ArrayList<Turno>();
@@ -130,6 +146,14 @@ public class Medico implements Serializable {
 
     public void setTurnos(List<Turno> turnos) {
         this.turnos = turnos;
+    }
+
+    public List<AdminCita> getAdminCita() {
+        return adminCita;
+    }
+
+    public void setAdminCita(List<AdminCita> adminCita) {
+        this.adminCita = adminCita;
     }
 
     private static final long serialVersionUID = 1l;

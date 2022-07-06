@@ -92,7 +92,7 @@ public class AdminCita implements Serializable {
     private List<Turno> turnos;
 */
     @ManyToOne
-    @JoinColumn(name="medico_id")
+    @JoinColumn(name="medico_id", nullable = false ,referencedColumnName = "id_medico")
     private Medico medico;
     
     public Long getIdAdminCita() {

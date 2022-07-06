@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tii.springboot.app.models.entity.Medico;
 import com.tii.springboot.app.models.service.IMedicoService;
 import com.tii.springboot.app.util.paginator.PageRender;
+import java.util.List;
 
 import java.util.Map;
 import javax.validation.Valid;
@@ -47,8 +48,11 @@ public class MedicoController {
     @RequestMapping(value = "/form")
     public String crear(Map<String, Object> model) {
         Medico medico = new Medico();
+        List <Medico> listMedicos = medicoService.listaMedicos();
         model.put("medico", medico);
         model.put("titulo", "Formulario del Medico");
+        model.put("medicos", listMedicos);
+        
         return "form";
     }
 

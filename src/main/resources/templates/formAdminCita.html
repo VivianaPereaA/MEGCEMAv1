@@ -31,15 +31,15 @@
                             </div>
                         </div>
 
+  
+                        
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" th:text="'Medico'"></label>
+                            <label class="col-sm-2 col-form-label"
+                                   th:text="'Medico: '"></label>
                             <div class="col-sm-6">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Seleccione al medico de su preferencia: </option>
-                                    <option value="1">Marcela Torres</option>
-                                    <option value="2">Tomas Perez</option>
-                                    <option value="3">Luciana Lopez</option>
-                                    <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+                                <select  class="col-sm-12 browser-default custom-select" id="medico">
+                                    <option th:each="medico:${medicos}" th:value="${medico.id}" th:text="${medico.nombre}"></option>
+                                  
                                 </select>
                             </div>
                         </div>

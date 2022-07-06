@@ -91,6 +91,10 @@ public class AdminCita implements Serializable {
 /*    @OneToMany(mappedBy = "medico", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Turno> turnos;
 */
+    @ManyToOne
+    @JoinColumn(name="medico_id")
+    private Medico medico;
+    
     public Long getIdAdminCita() {
         return idAdminCita;
     }
@@ -165,6 +169,16 @@ public class AdminCita implements Serializable {
         this.estadoCita = estadoCita;
     }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+    
+    
+
 /*    public List<Turno> getTurnos() {
         return turnos;
     }
@@ -173,10 +187,12 @@ public class AdminCita implements Serializable {
         this.turnos = turnos;
     }
 */
+
     @Override
     public String toString() {
-        return "AdminCita{" + "idAdminCita=" + idAdminCita + ", nombreCita=" + nombreCita + ", adminCitaFecha=" + adminCitaFecha + ", adminCitaHora=" + adminCitaHora + ", horaCita=" + horaCita + ", adminCitaMotivo=" + adminCitaMotivo + ", adminCitaObservacion=" + adminCitaObservacion + ", paciente=" + paciente + ", estadoCita=" + estadoCita + '}';
+        return "AdminCita{" + "idAdminCita=" + idAdminCita + ", nombreCita=" + nombreCita + ", adminCitaFecha=" + adminCitaFecha + ", adminCitaHora=" + adminCitaHora + ", horaCita=" + horaCita + ", adminCitaMotivo=" + adminCitaMotivo + ", adminCitaObservacion=" + adminCitaObservacion + ", paciente=" + paciente + ", estadoCita=" + estadoCita + ", medico=" + medico + '}';
     }
+
     
     
 

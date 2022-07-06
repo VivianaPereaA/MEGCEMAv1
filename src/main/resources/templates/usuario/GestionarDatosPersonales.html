@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout::head"></head>
+    <!--    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+        <script th:src="@{/js/jquery.js}" src="../static/js/jquery.js"></script>
+        <script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>-->
+
+    <body>
+        <header th:replace="layout/layout::header"></header>
+        <div class="container py-4">
+            <div class="card bg-light">
+                <h2 class="card-header text-secondary" th:text="${titulo}"></h2>
+                <div class="card-body" th:object="${DetalleUsuario}">
+                    <div class="m-2 p-2 container">
+                        <div class="card bg-light">
+                            <h2 class="card-header text-secondary" th:text="'Datos Básicos'"></h2>
+                            <div class="card-body">
+                                <div class="row my-4">
+                                    <div class="col-sm-6 col-12 col-md-6 col-lg-6">
+                                        <div class="row mb-4">
+                                            <div class="col-sm-12 col-12">
+                                                <div>
+                                                    <label class="font-weight-bolder">
+                                                        Nombres y Apellidos
+                                                    </label>
+                                                </div>
+                                                <input type="text" class="form-control bg-white" th:field="*{detUsuNombre}" readonly="readonly"/>
+                                            </div> 
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-12 m-1">
+                                                <div>
+                                                    <label class="font-weight-bolder">
+                                                        Dirección
+                                                    </label>
+                                                </div>
+                                                <input type="text" class="form-control" th:field="*{detUsuDireccion}" />
+                                                <div id="detUsuDireccionError"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row my-4">
+                                    <div class="col-12 col-sm-6 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Teléfono
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{detUsuTelefono}" />
+                                        <div id="detUsuTelefonoError"></div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Edad
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" th:field="*{detUsuEdad}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="row my-4"> 
+                                    <div class="col-12 col-sm-6 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Fecha de Nacimiento
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" th:field="*{detUsuFechaNacimiento}" readonly="readonly" />
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Sexo
+                                            </label>
+                                        </div>
+                                        <select class="custom-select bg-white text-dark" id="selectedSexo" disabled="disabled">
+                                            <option th:selected="${#strings.equals(DetalleUsuario.detUsuSexo,'M')}" value="M">Masculino</option>
+                                            <option th:selected="${not #strings.equals(DetalleUsuario.detUsuSexo,'M')}" value="F">Femenino</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2 p-2 container">
+                        <div class="card bg-light">
+                            <h2 class="card-header text-secondary" th:text="'Datos Secundarios'"></h2>
+                            <div class="card-body">
+                                <div class="mb-4 row">
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Correo
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{detUsuCorreo}" />
+                                        <div id="detUsuCorreoError"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Número de Documento
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" th:field="*{detUsuTipoDocNumero}" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Código del Colegio
+                                            </label> 
+                                        </div>
+                                        <input  type="text" class="form-control bg-white" th:field="*{detUsuCodigoColegio}" readonly="readonly"/>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Especialidad
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" th:field="*{detUsuEspecialidad}" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Estado Civil
+                                            </label>
+                                        </div>
+                                        <select class="custom-select" id="civilSelect">
+                                            <option th:value="1" th:selected="${#strings.equalsIgnoreCase(DetalleUsuario.detUsuEstadoCivil,'Soltero')}">Soltero</option>
+                                            <option th:value="2" th:selected="${#strings.equalsIgnoreCase(DetalleUsuario.detUsuEstadoCivil,'Casado')}">Casado</option>
+                                            <option th:value="3" th:selected="${#strings.equalsIgnoreCase(DetalleUsuario.detUsuEstadoCivil,'Divorciado')}">Divorciado</option>
+                                            <option th:value="4" th:selected="${#strings.equalsIgnoreCase(DetalleUsuario.detUsuEstadoCivil,'Viudo')}">Viudo</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Lugar de Nacimiento
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{detUsuLugarNacimiento}" />
+                                        <div id="detUsuLugarNacimientoError"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-4 row">
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Ocupación
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" th:field="*{detUsuOcupacion}" readonly="readonly" />
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Religión
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{detUsuReligion}" />
+                                        <div id="detUsuReligionError"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2 p-2 container">
+                        <div class="card bg-light">
+                            <h2 class="card-header text-secondary" th:text="'Datos de la Cuenta'"></h2>
+                            <div class="card-body">
+                                <div class="mb-4 row">
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Nombre de Usuario
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{usuario.usu_codigo}" />
+                                        <div id="usuCodigoError"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 col-md-6">
+                                        <div>
+                                            <label class="font-weight-bolder">
+                                                Contraseña
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" name="password" id="passwordId"/>
+                                        <div id="usuContrasenaError"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2 p-2 container">
+                        <button class="btn btn-outline-success btn-registrar" id="RegistraDatosId">
+                            <i class="fa fa-check"></i>
+                            <span class="btn-text">Guardar Datos Personales</span>
+                        </button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="layout/layout :: styleSelector"></div>
+</div>
+</div>
+</div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+<script th:replace="Usuario/js/ObtenerContra :: javascriptContraseña"></script>
+<script th:src="@{/js/sebas/RegistrarDatos.js}"></script>
+</body>
+</html>

@@ -19,19 +19,20 @@ and open the template in the editor.
                 <div class="card-header" th:text="${titulo}"></div>
                 <div class="card-body">
 
-                <!--    <h4 class="card-title">
-                        
-                        <a th:href="@{/formAdminCita}" class="btn btn-primary btn-xs">Crear Cita</a>
-                    </h4> -->
-                
+                    <!--    <h4 class="card-title">
+                            
+                            <a th:href="@{/formAdminCita}" class="btn btn-primary btn-xs">Crear Cita</a>
+                        </h4> -->
 
-                
+
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Motivo de la cita</th>
+                                <th style="center">Acciones para el paciente</th>
 
                             </tr>
                         </thead>
@@ -40,26 +41,77 @@ and open the template in the editor.
 
                                 <td th:text="${adminCita.adminCitaFecha}"></td>
                                 <td th:text="${adminCita.adminCitaHora}"></td> 
-                               <!--<td th:text="${adminCita.horaCita}"></td>-->
-                               <!-- -->
                                 <td th:text="${adminCita.adminCitaMotivo}"></td>
-                        <td><a class="btn btn-primary btn-s" th:href="@{/formAdminCita/} + ${adminCita.idAdminCita}" th:text="'editar'"></a></td>
-                        <!--        <td><a class="btn btn-danger btn-s" th:href="@{/eliminarAdminCita/} + ${adminCita.idAdminCita}" th:text="'eliminar'" onclick="return confirm('¿Estas seguro que quieres eliminar la Cita?');"></a></td> -->
+                                <td><a class="btn btn-primary btn-s" th:href="@{/formAdminCita/} + ${adminCita.idAdminCita}" th:text="'editar'"></a></td>
+                                <td><a class="btn btn-danger btn-s" th:text="'Cancelar cita'" onclick="submitResult(event)"><i class="far fa-check-circle"></i></a></td>
 
-                        </tr>
+                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="container"> 
+                        <div class="modal" id="dialogo1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- cabecera del diálogo -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Título del diálogo</h4>
+                                        <button type="button" class="close" data-dismiss="modal">X</button>
+                                    </div>
+
+                                    <!-- cuerpo del diálogo -->
+                                    <div class="modal-body">
+                                        Contenido del diálogo.
+                                    </div>
+
+                                    <!-- pie del diálogo -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> 
+
+                    </div>
+
                     <nav th:replace="paginator-nav :: paginator"></nav>
                 </div>
             </div>
         </div>
 
-
+        <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+        <script>
 
+                                    function submitResult(e) {
+                                        e.preventDefault();
+                                        Swal.fire({
+                                            title: '¿Esta seguro de cancelar su cita?',
+                                            text: "No podra revertir esta accion!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Sí, cancelar mi cita!'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                Swal.fire(
+                                                        'Cita cancelada!',
+                                                        'Su cita fue cancelada.',
+                                                        'success'
+                                                        )
+                                            }
+                                        })
+                                    }
+
+        </script>
 
     </body>
 </html>

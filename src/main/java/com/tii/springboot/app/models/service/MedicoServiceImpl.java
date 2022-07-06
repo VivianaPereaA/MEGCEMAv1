@@ -45,4 +45,10 @@ public class MedicoServiceImpl implements IMedicoService {
         return medicoDao.findAll(pageable);
     }
 
+    @Override
+    public List<Medico> listaMedicos() {
+        return (List<Medico>) medicoDao.findAll();
+
+    }
+
 }

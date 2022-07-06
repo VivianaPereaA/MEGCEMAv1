@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 
 public interface IMedicoService {
 
+    public List<Medico> listaMedicos();
+    
     public List<Medico> findAll();
 
     public Page<Medico> findAll(Pageable pageable);

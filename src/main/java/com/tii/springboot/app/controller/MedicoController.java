@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tii.springboot.app.models.entity.Medico;
+import com.tii.springboot.app.models.service.IEspecialidadesService;
 import com.tii.springboot.app.models.service.IMedicoService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.List;
@@ -29,6 +30,9 @@ public class MedicoController {
 
     @Autowired
     private IMedicoService medicoService;
+    
+    @Autowired
+    private IEspecialidadesService especialidadesService;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String listar(@RequestParam(name="page", defaultValue ="0") int page, Model model) {
@@ -46,7 +50,10 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/form")
-    public String crear(Map<String, Object> model) {
+    public String crear(Map<String, Object> model, Model model2) {
+        
+        model2.addAttribute("especialidades2", especialidadesService.findAllEspecialidades());
+        
         Medico medico = new Medico();
         List <Medico> listMedicos = medicoService.listaMedicos();
         model.put("medico", medico);
@@ -57,9 +64,9 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/form/{id}")
-    public String editar(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+    public String editar(@PathVariable(value="id") Long id, Map<String, Object> model,Model model2, RedirectAttributes flash) {
         Medico medico = null;
-        
+        model2.addAttribute("especialidades2", especialidadesService.findAllEspecialidades());
         if(id>0){
             medico= medicoService.findOne(id);
             if (medico == null) {

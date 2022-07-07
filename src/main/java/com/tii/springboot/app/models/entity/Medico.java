@@ -11,7 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,7 +31,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "medicos")
 public class Medico implements Serializable {
 
-    public Medico(Long id, String nombre, String apellido, String email, Date createAt, String colegiatura, String telefono, List<Turno> turnos, List<AdminCita> adminCita) {
+    public Medico(Long id, String nombre, String apellido, String email, Date createAt, String colegiatura, String telefono, List<Turno> turnos, List<AdminCita> adminCita, Especialidades especialidades) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -37,8 +41,9 @@ public class Medico implements Serializable {
         this.telefono = telefono;
         this.turnos = turnos;
         this.adminCita = adminCita;
+        this.especialidades = especialidades;
     }
-    
+
     @Id
     @Column(name = "id_medico")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,7 +84,11 @@ public class Medico implements Serializable {
     
     @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
     private List<AdminCita> adminCita;
-
+    
+    @OneToOne
+    @JoinColumn(name = "especialidad_id", referencedColumnName = "id_especialidad")
+    private Especialidades especialidades;
+    
     public Medico() {
         turnos = new ArrayList<Turno>();
     }
@@ -154,6 +163,14 @@ public class Medico implements Serializable {
 
     public void setAdminCita(List<AdminCita> adminCita) {
         this.adminCita = adminCita;
+    }
+
+    public Especialidades getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
     private static final long serialVersionUID = 1l;

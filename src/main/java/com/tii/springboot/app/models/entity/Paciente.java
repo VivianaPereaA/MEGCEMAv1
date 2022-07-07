@@ -28,7 +28,7 @@ public class Paciente implements Serializable {
         return this.nombre + " " + this.apellido;
     }
 
-    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas, List<Cita> cita) {
+    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,7 +36,6 @@ public class Paciente implements Serializable {
         this.createAt = createAt;
         this.adminCita = adminCita;
         this.facturas = facturas;
-        this.cita = cita;
     }
 
     @Id
@@ -69,8 +68,6 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
     
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
-    private List<Cita> cita;
     
     public Paciente(){
         super();
@@ -134,14 +131,6 @@ public class Paciente implements Serializable {
 
     public void setAdminCita(List<AdminCita> adminCita) {
         this.adminCita = adminCita;
-    }
-    
-    public List<Cita> getCita() {
-        return cita;
-    }
-
-    public void setCita(List<Cita> cita) {
-        this.cita = cita;
     }
 
     

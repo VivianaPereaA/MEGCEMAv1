@@ -28,7 +28,7 @@ public class Paciente implements Serializable {
         return this.nombre + " " + this.apellido;
     }
 
-    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas) {
+    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas, List<Llegada> llegada, List<Diagnostico> diagnostico) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,6 +36,8 @@ public class Paciente implements Serializable {
         this.createAt = createAt;
         this.adminCita = adminCita;
         this.facturas = facturas;
+        this.llegada = llegada;
+        this.diagnostico = diagnostico;
     }
 
     @Id
@@ -68,6 +70,11 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
     
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Llegada> llegada;
+    
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Diagnostico> diagnostico;
     
     public Paciente(){
         super();
@@ -133,7 +140,21 @@ public class Paciente implements Serializable {
         this.adminCita = adminCita;
     }
 
-    
+    public List<Llegada> getLlegada() {
+        return llegada;
+    }
+
+    public void setLlegada(List<Llegada> llegada) {
+        this.llegada = llegada;
+    }
+
+    public List<Diagnostico> getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(List<Diagnostico> diagnostico) {
+        this.diagnostico = diagnostico;
+    }
 
     private static final long serialVersionUID = 1l;
 

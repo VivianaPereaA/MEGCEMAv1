@@ -5,13 +5,13 @@
  */
 package com.tii.springboot.app.models.dao;
 
-import com.tii.springboot.app.models.entity.AdminCita;
+import com.tii.springboot.app.models.entity.Diagnostico;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author usuario
  */
-public interface IDiagnosticoDao extends PagingAndSortingRepository<AdminCita, Long> {
+public interface IDiagnosticoDao extends PagingAndSortingRepository<Diagnostico, Long> {
     
 }

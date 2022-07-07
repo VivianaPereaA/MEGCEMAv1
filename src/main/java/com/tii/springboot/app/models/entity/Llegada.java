@@ -7,14 +7,13 @@ package com.tii.springboot.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,10 +24,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "llegadas")
 public class Llegada implements Serializable{
+
+    public Llegada(Long id, String nombreLlegada, Date llegadaFecha, Date llegadaHora, String llegadaEstado, Paciente paciente) {
+        this.id = id;
+        this.nombreLlegada = nombreLlegada;
+        this.llegadaFecha = llegadaFecha;
+        this.llegadaHora = llegadaHora;
+        this.llegadaEstado = llegadaEstado;
+        this.paciente = paciente;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idLlegada")
-    private Long idLlegada;
+    @Column(name= "id_llegada")
+    private Long id;
     
     @NotEmpty
     private String nombreLlegada;
@@ -46,13 +55,21 @@ public class Llegada implements Serializable{
     
     @NotEmpty
     private String llegadaEstado;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente")
+    private Paciente paciente;
 
-    public Long getIdLlegada() {
-        return idLlegada;
+    public Llegada() {
+        super();
+    }
+    
+    public Long getId() {
+        return id;
     }
 
-    public void setIdLlegada(Long idLlegada) {
-        this.idLlegada = idLlegada;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombreLlegada() {
@@ -63,8 +80,6 @@ public class Llegada implements Serializable{
         this.nombreLlegada = nombreLlegada;
     }
 
-    
-    
     public Date getLlegadaFecha() {
         return llegadaFecha;
     }
@@ -80,8 +95,22 @@ public class Llegada implements Serializable{
     public void setLlegadaHora(Date llegadaHora) {
         this.llegadaHora = llegadaHora;
     }
-    
-    
+
+    public String getLlegadaEstado() {
+        return llegadaEstado;
+    }
+
+    public void setLlegadaEstado(String llegadaEstado) {
+        this.llegadaEstado = llegadaEstado;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
     
     private static final long serialVersionUID = 1L;
 }

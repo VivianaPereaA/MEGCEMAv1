@@ -4,6 +4,7 @@ package com.tii.springboot.app.controller;
 import com.tii.springboot.app.models.entity.Llegada;
 import com.tii.springboot.app.models.service.ILlegadaService;
 import com.tii.springboot.app.util.paginator.PageRender;
+import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @SessionAttributes("llegada")
 public class LlegadaController {
-        @Autowired
+     
+    @Autowired
     private ILlegadaService llegadaService;
+    
 
     @RequestMapping(value = "/listarLlegada", method = RequestMethod.GET)
     public String listarLlegada(@RequestParam(name="page", defaultValue ="0") int page, Model model) {
@@ -45,7 +48,9 @@ public class LlegadaController {
     @RequestMapping(value = "/formLlegada")
     public String crear(Map<String, Object> model) {
         Llegada llegada = new Llegada();
+        List <Llegada> listLlegada = llegadaService.findAllLlegada();
         model.put("llegada", llegada);
+        model.put("llegadas", listLlegada);
         model.put("titulo", "Formulario de Llegada");
         return "formLlegada";
     }
@@ -76,7 +81,7 @@ public class LlegadaController {
             model.addAttribute("titulo", "Formulario de Llegada");
             return "formLlegada";
         }
-        String mensajeFlash= (llegada.getIdLlegada()!= null)? "Llegada editada con exito!":"Llegada creada con exito!";
+        String mensajeFlash= (llegada.getId()!= null)? "Llegada editada con exito!":"Llegada creada con exito!";
         
         llegadaService.saveLlegada(llegada);
         status.setComplete();

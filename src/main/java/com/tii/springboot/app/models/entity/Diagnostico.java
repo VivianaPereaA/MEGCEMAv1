@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,6 +22,16 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "diagnosticos")
 public class Diagnostico implements Serializable {
+
+    public Diagnostico(Long idDiagnostico, String sintomasDiagnostico, String antecedentesDiagnostico, String alergiasDiagnostico, String evaluacionDiagnostico, String observacionesDiagnostico, Paciente paciente) {
+        this.idDiagnostico = idDiagnostico;
+        this.sintomasDiagnostico = sintomasDiagnostico;
+        this.antecedentesDiagnostico = antecedentesDiagnostico;
+        this.alergiasDiagnostico = alergiasDiagnostico;
+        this.evaluacionDiagnostico = evaluacionDiagnostico;
+        this.observacionesDiagnostico = observacionesDiagnostico;
+        this.paciente = paciente;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +44,7 @@ public class Diagnostico implements Serializable {
     @NotEmpty
     private String antecedentesDiagnostico;
 
-       @NotEmpty
+    @NotEmpty
     private String alergiasDiagnostico;
     
     @NotEmpty
@@ -40,6 +52,14 @@ public class Diagnostico implements Serializable {
 
     @NotEmpty
     private String observacionesDiagnostico;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente")
+    private Paciente paciente;
+    
+    public Diagnostico(){
+        super();
+    }
     
     public Long getIdDiagnostico() {
         return idDiagnostico;
@@ -87,6 +107,14 @@ public class Diagnostico implements Serializable {
 
     public void setObservacionesDiagnostico(String observacionesDiagnostico) {
         this.observacionesDiagnostico = observacionesDiagnostico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     

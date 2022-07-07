@@ -56,6 +56,7 @@ public class AdminCitaController {
     @RequestMapping(value = "/formAdminCita")
     public String crearAdminCita(Map<String, Object> model, Model modell) {
         AdminCita adminCita = new AdminCita();
+        
         modell.addAttribute("medico", medicoService.findAll());
         modell.addAttribute("paciente", pacienteService.findAllPaciente());
         modell.addAttribute("estadoCita", estadoCitaService.findAllEstadoCita());
@@ -66,10 +67,13 @@ public class AdminCitaController {
     }
 
     @RequestMapping(value = "/formAdminCita/{idAdminCita}")
-    public String editarAdminCita(@PathVariable(value="idAdminCita") Long idAdminCita, Map<String, Object> model, RedirectAttributes flash) {
+    public String editarAdminCita(@PathVariable(value="idAdminCita") Long idAdminCita, Map<String, Object> model, Model modell, RedirectAttributes flash) {
         AdminCita adminCita = null;
         
         if(idAdminCita>0){
+            modell.addAttribute("medico", medicoService.findAll());
+            modell.addAttribute("paciente", pacienteService.findAllPaciente());
+            modell.addAttribute("estadoCita", estadoCitaService.findAllEstadoCita());
             adminCita= adminCitaService.findOneAdminCita(idAdminCita);
             if (adminCita == null) {
             flash.addFlashAttribute("error", "El ID de la Cita no existe en la base de datos");

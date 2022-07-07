@@ -5,7 +5,6 @@
  */
 package com.tii.springboot.app.controller;
 
-import com.tii.springboot.app.models.entity.Medico;
 import com.tii.springboot.app.models.entity.Servicio;
 import com.tii.springboot.app.models.service.IServicioService;
 import com.tii.springboot.app.util.paginator.PageRender;
@@ -93,6 +92,18 @@ public class ServicioController {
         flash.addFlashAttribute("success", mensajeFlash);
         //falta el /
         return "redirect:listarServicio";
+    }
+    
+    @RequestMapping(value = "/eliminarServicio/{id}")
+    public String eliminarServicio(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
+
+        if (id > 0) {
+            servicioService.eliminarServicio(id);
+            flash.addFlashAttribute("success", "Servicio eliminado con exito!");
+
+        }
+
+        return "redirect:/listarServicio";
     }
     
 }

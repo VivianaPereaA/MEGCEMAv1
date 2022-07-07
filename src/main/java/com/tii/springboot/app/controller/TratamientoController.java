@@ -96,11 +96,11 @@ public class TratamientoController {
         return "redirect:listarTratamiento";
     }
 
-    @RequestMapping(value = "/eliminar/{idT}")
-    public String eliminarTratamiento(@PathVariable(value = "idT") Long idT, RedirectAttributes flash) {
+    @RequestMapping(value = "/eliminarTratamiento/{id}")
+    public String eliminarTratamiento(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
-        if (idT > 0) {
-            tratamientoService.eliminarTratamiento(idT);
+        if (id > 0) {
+            tratamientoService.eliminarTratamiento(id);
             flash.addFlashAttribute("success", "Tratamiento eliminado con exito!");
 
         }

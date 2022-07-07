@@ -11,10 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -28,17 +25,6 @@ public class Tratamiento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    //@Size(min=4, max=12)
-    private String nombrePaciente;
-
-
-    private String apellidoPaciente;
-
-
-    private String emailPaciente;
-
-
     //@Size(min=8)
     @NotEmpty
     private String tipoEnfermedad;
@@ -48,12 +34,6 @@ public class Tratamiento implements Serializable {
      
     @NotEmpty
     private String Medicamentos;
-    
-    @NotNull
-    private int cantidadDosis;
-    
-    @NotNull
-    private int Dosis;
                 
     @NotEmpty
     private String observaciones;
@@ -66,29 +46,6 @@ public class Tratamiento implements Serializable {
         this.id = id;
     }
 
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
-    }
-
-    public String getApellidoPaciente() {
-        return apellidoPaciente;
-    }
-
-    public void setApellidoPaciente(String apellidoPaciente) {
-        this.apellidoPaciente = apellidoPaciente;
-    }
-
-    public String getEmailPaciente() {
-        return emailPaciente;
-    }
-
-    public void setEmailPaciente(String emailPaciente) {
-        this.emailPaciente = emailPaciente;
-    }
 
     public String getTipoEnfermedad() {
         return tipoEnfermedad;
@@ -97,8 +54,6 @@ public class Tratamiento implements Serializable {
     public void setTipoEnfermedad(String tipoEnfermedad) {
         this.tipoEnfermedad = tipoEnfermedad;
     }
-
-
 
     
 
@@ -118,23 +73,7 @@ public class Tratamiento implements Serializable {
         this.Medicamentos = Medicamentos;
     }
 
-    public int getCantidadDosis() {
-        return cantidadDosis;
-    }
-
-    public void setCantidadDosis(int cantidadDosis) {
-        this.cantidadDosis = cantidadDosis;
-    }
-
-    public int getDosis() {
-        return Dosis;
-    }
-
-    public void setDosis(int Dosis) {
-        this.Dosis = Dosis;
-    }
-    
-    
+ 
 
     public String getObservaciones() {
         return observaciones;

@@ -48,4 +48,10 @@ public class ServicioServiceImpl implements IServicioService {
         return servicioDao.findById(id).orElse(null);
     }
 
+    @Override
+    @Transactional
+    public void eliminarServicio(Long id) {
+        servicioDao.deleteById(id);
+    }
+
 }

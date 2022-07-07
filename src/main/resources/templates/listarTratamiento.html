@@ -29,7 +29,6 @@ and open the template in the editor.
                             <th>Tipo de enfermedad</th>
                             <th>Enfermedad del paciente</th>
                             <th>Medicamentos</th>
-                            <th>Cantidad</th>
                         
                             <th>Acciones para el Usuario</th>
 
@@ -41,9 +40,8 @@ and open the template in the editor.
                             <td th:text="${tratamiento.tipoEnfermedad}"></td>
                             <td th:text="${tratamiento.enfermedadPaciente}"></td>
                             <td th:text="${tratamiento.Medicamentos}"></td>
-                            <td th:text="${tratamiento.cantidadDosis}"></td>
                             <td><a class="btn btn-primary btn-s" th:href="@{/formTratamiento/} + ${tratamiento.id}" th:text="'Modificar tratamiento'"></a></td>
-                            <td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${tratamiento.id}" th:text="'Eliminar tratamiento'" onclick="return confirm('¿Estas seguro que deseas eliminar este tratamiento?');"></a></td>
+                            <td><a class="btn btn-success btn-s" th:href="@{/eliminarTratamiento/} + ${tratamiento.id}" th:text="'Eliminar tratamiento'" onclick="return confirm('¿Estas seguro que deseas eliminar este tratamiento?');"></a></td>
 
                         </tr>
                     </tbody>

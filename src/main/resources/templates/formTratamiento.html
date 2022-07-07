@@ -17,57 +17,16 @@
                     </div>
                     <form th:action="@{/formTratamiento}" th:object="${tratamiento}" method="post">
 
-                        <!-- <div class="form-group row">
-                             <label class="col-sm-2 col-form-label" th:text="'Paciente'"></label>
-                             <div class="col-sm-6">
-                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Andres Guzman">
-                             </div>
-                         </div>-->
-
-                        <!--    <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Tipo de Enfermedad</label>
-                                <div class="col-sm-6">
-                                    <input type="text" th:field="*{tipoEnfermedad}" class="form-control" th:errorclass="'form-control alert-danger'" />
-                                    <small class="form text text-danger" th:if="${#fields.hasErrors('tipoEnfermedad')}" th:errors="*{tipoEnfermedad}"></small>
-                                </div>
-                            </div>-->
 
 
-                        <!--<div class="form-group row" style="">
-                            <label for="tipoEnfermedad" class="col-sm-2 col-form-label"
-                                   th:text="'Tipo de Enfermedad'"></label>
-                            <div class="col-sm-6">
-                                <select  class="col-sm-12 browser-default custom-select" id='tipoEnfermedad'>
-                                    <option th:value="1" th:text="Garganta"></option>
-                                    <option th:value="2" th:text="Nariz"></option>
-                                    <option th:value="3" th:text="Oido"></option>
-                                </select>
-                            </div>
-                        </div>-->
-
-                            <div class="form-group row" style="">
-                                <label for="tipoEnfermedad" class="col-sm-2 col-form-label"
-                                       th:text="'Tipo de Enfermedad'"></label>
-                                <div class="col-sm-8">
-                                    <select  class="col-sm-6 browser-default custom-select"
-                                             style="max-width:  320px" id='tipoEnfermedad'>
-                                        <option th:value="2" th:text="Nariz"></option>
-                                        <option th:value="1" th:text="Oido"></option>
-                                        <option th:value="0" th:text="Garganta"></option>
-                                    </select>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Tipo de Enfermedad</label>
                                         <div class="col-sm-6">
-                                            <input type="text" th:field="*{tipoEnfermedad}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                            <input type="text" th:field="*{tipoEnfermedad}" class="form-control" placeholder="Ingrese: nariz, oido o garganta" th:errorclass="'form-control alert-danger'" />
                                             <small class="form text text-danger" th:if="${#fields.hasErrors('tipoEnfermedad')}" th:errors="*{tipoEnfermedad}"></small>
                                         </div>
                                     </div>
-
-                                    <select class="form-control" id="dropDownList">
-                                        <option value="0">select option</option>
-                                        <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
-                                    </select>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Enfermedad del Paciente</label>
@@ -86,44 +45,6 @@
                                             <small class="form text text-danger" th:if="${#fields.hasErrors('Medicamentos')}" th:errors="*{Medicamentos}"></small>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="form-group row" style="">
-                                         <label for="Medicamentos" class="col-sm-2 col-form-label"
-                                                th:text="'Medicamentos'"></label>
-                                         <div class="col-sm-6">
-                                             <select  class="col-sm-12 browser-default custom-select" id='Medicamentos'>
-                                                 <option th:value="1" th:text="Gentamicina"></option>
-                                                 <option th:value="2" th:text="Ciprofloxacino"></option>
-                                                 <option th:value="3" th:text="Levofloxacino"></option>
-                                                 <option th:value="4" th:text="Cotrimoxazol"></option>
-                                                 <option th:value="5" th:text="Doxiciclina"></option>
-                                                 <option th:value="6" th:text="Azitromicina"></option>
-                                                 <option th:value="7" th:text="Flucytosina"></option>
-                                                 <option th:value="8" th:text="Itraconazol"></option>
-                                                 <option th:value="9" th:text="Miconazol"></option>
-                                                 <option th:value="10" th:text="Terbinafina"></option>
-                                                
-                                             </select>
-                                         </div>
-                                     </div>-->
-
-
-
-                                    <!--<div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Cantidad</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" th:field="*{cantidadDosis}" class="form-control" th:errorclass="'form-control alert-danger'" />
-                                            <small class="form text text-danger" th:if="${#fields.hasErrors('cantidadDosis')}" th:errors="*{cantidadDosis}"></small>
-                                        </div>
-                                    </div>
-            
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Dosis</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" th:field="*{Dosis}" class="form-control" th:errorclass="'form-control alert-danger'" />
-                                            <small class="form text text-danger" th:if="${#fields.hasErrors('Dosis')}" th:errors="*{Dosis}"></small>
-                                        </div>
-                                    </div>-->
 
                                     <div class="form-group row">
                                         <label for="observaciones" class="col-sm-2 col-form-label">Observaciones: </label>

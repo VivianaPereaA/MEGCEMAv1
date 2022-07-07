@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
  * @author usuario
  */
 public interface IServicioService {
+
     public List<Servicio> findAllServicio();
 
     public Page<Servicio> findAllServicio(Pageable pageable);
@@ -22,4 +23,7 @@ public interface IServicioService {
     public void saveServicio(Servicio servicio);
 
     public Servicio findOneServicio(Long id);
+
+    public void eliminarServicio(Long id);
+
 }

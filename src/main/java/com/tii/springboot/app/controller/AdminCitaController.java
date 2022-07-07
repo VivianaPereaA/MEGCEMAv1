@@ -3,7 +3,9 @@ package com.tii.springboot.app.controller;
 
 import com.tii.springboot.app.models.entity.AdminCita;
 import com.tii.springboot.app.models.service.IAdminCitaService;
+import com.tii.springboot.app.models.service.IEstadoCitaService;
 import com.tii.springboot.app.models.service.IMedicoService;
+import com.tii.springboot.app.models.service.IPacienteService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.Map;
 import javax.validation.Valid;
@@ -30,6 +32,11 @@ public class AdminCitaController {
     private IAdminCitaService adminCitaService; 
     @Autowired
     private IMedicoService medicoService;
+    @Autowired
+    private IPacienteService pacienteService;
+    @Autowired
+    private IEstadoCitaService estadoCitaService;
+
 
     @RequestMapping(value = "/listarAdminCita", method = RequestMethod.GET)
     public String listarAdminCita(@RequestParam(name="page", defaultValue ="0") int page, Model model) {
@@ -50,6 +57,9 @@ public class AdminCitaController {
     public String crearAdminCita(Map<String, Object> model, Model modell) {
         AdminCita adminCita = new AdminCita();
         modell.addAttribute("medico", medicoService.findAll());
+        modell.addAttribute("paciente", pacienteService.findAllPaciente());
+        modell.addAttribute("estadoCita", estadoCitaService.findAllEstadoCita());
+        
         model.put("adminCita", adminCita);
         model.put("titulo", "Formulario de las citas");
         return "formAdminCita";
@@ -78,8 +88,6 @@ public class AdminCitaController {
     @RequestMapping(value = "/formAdminCita", method = RequestMethod.POST)
     public String guardarAdminCita(@Valid AdminCita adminCita, BindingResult result, Model model,RedirectAttributes flash ,SessionStatus status) {
        
-       // model.addAttribute("medico", medicoService.findAll());
-        
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Formulario de las citas");
             return "formAdminCita";

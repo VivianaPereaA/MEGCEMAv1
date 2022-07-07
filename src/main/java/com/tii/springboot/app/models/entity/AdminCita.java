@@ -5,11 +5,9 @@
  */
 package com.tii.springboot.app.models.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,12 +33,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "admin_citas")
 public class AdminCita implements Serializable {
 
-    public AdminCita() {
-    }
 
-    public AdminCita(Long idAdminCita, String nombreCita, Date adminCitaFecha, Date adminCitaHora, String horaCita, String adminCitaMotivo, String adminCitaObservacion, Paciente paciente, EstadoCita estadoCita) {
+
+    public AdminCita(Long idAdminCita, Date adminCitaFecha, Date adminCitaHora, String horaCita, String adminCitaMotivo, String adminCitaObservacion, Paciente paciente, EstadoCita estadoCita, Medico medico) {
         this.idAdminCita = idAdminCita;
-        this.nombreCita = nombreCita;
         this.adminCitaFecha = adminCitaFecha;
         this.adminCitaHora = adminCitaHora;
         this.horaCita = horaCita;
@@ -48,6 +44,11 @@ public class AdminCita implements Serializable {
         this.adminCitaObservacion = adminCitaObservacion;
         this.paciente = paciente;
         this.estadoCita = estadoCita;
+        this.medico = medico;
+    }
+    
+    public AdminCita() {
+        super();
     }
 
     @Id
@@ -55,9 +56,6 @@ public class AdminCita implements Serializable {
     @Column(name = "id_admin_cita")
     private Long idAdminCita;
 
-    @NotEmpty
-    private String nombreCita;
- 
     @NotNull
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -84,13 +82,10 @@ public class AdminCita implements Serializable {
     @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id_paciente" )
     private Paciente paciente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "estado_cita_id")
+    @OneToOne
+    @JoinColumn(name = "estado_cita_id", referencedColumnName = "id_estado_cita")
     private EstadoCita estadoCita;
 
-/*    @OneToMany(mappedBy = "medico", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Turno> turnos;
-*/
     @ManyToOne
     @JoinColumn(name="medico_id", nullable = false ,referencedColumnName = "id_medico")
     private Medico medico;
@@ -101,14 +96,6 @@ public class AdminCita implements Serializable {
 
     public void setIdAdminCita(Long idAdminCita) {
         this.idAdminCita = idAdminCita;
-    }
-
-    public String getNombreCita() {
-        return nombreCita;
-    }
-
-    public void setNombreCita(String nombreCita) {
-        this.nombreCita = nombreCita;
     }
 
     public Date getAdminCitaFecha() {
@@ -133,9 +120,7 @@ public class AdminCita implements Serializable {
 
     public void setHoraCita(String horaCita) {
         this.horaCita = horaCita;
-    }
-    
-    
+    }  
 
     public String getAdminCitaMotivo() {
         return adminCitaMotivo;
@@ -176,21 +161,10 @@ public class AdminCita implements Serializable {
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
-    
-    
-
-/*    public List<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(List<Turno> turnos) {
-        this.turnos = turnos;
-    }
-*/
 
     @Override
     public String toString() {
-        return "AdminCita{" + "idAdminCita=" + idAdminCita + ", nombreCita=" + nombreCita + ", adminCitaFecha=" + adminCitaFecha + ", adminCitaHora=" + adminCitaHora + ", horaCita=" + horaCita + ", adminCitaMotivo=" + adminCitaMotivo + ", adminCitaObservacion=" + adminCitaObservacion + ", paciente=" + paciente + ", estadoCita=" + estadoCita + ", medico=" + medico + '}';
+        return "AdminCita{" + "idAdminCita=" + idAdminCita +  ", adminCitaFecha=" + adminCitaFecha + ", adminCitaHora=" + adminCitaHora + ", horaCita=" + horaCita + ", adminCitaMotivo=" + adminCitaMotivo + ", adminCitaObservacion=" + adminCitaObservacion + ", paciente=" + paciente + ", estadoCita=" + estadoCita + ", medico=" + medico + '}';
     }
 
     

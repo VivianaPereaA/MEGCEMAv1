@@ -24,20 +24,27 @@
 
                     <form th:action="@{/formAdminCita}" th:object="${adminCita}" method="POST">
 
-                        <div class="form-group row">
+<!--                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label" th:text="'Paciente'"></label>
                             <div class="col-sm-6">
                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Andres Guzman">
                             </div>
-                        </div>
+                        </div>-->
 
-  
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Paciente: </label>
+                            <div class="col-sm-6">
+                                <select  class="col-sm-12 browser-default custom-select" th:field="*{paciente}">
+                                    <option th:each="pct:${paciente}" th:value="${pct.id}" th:text="${pct.nombre +'  '+ pct.apellido}"></option>
+                                  
+                                </select>
+                            </div>
+                        </div>
                         
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label"
-                                   th:text="'Medico: '"></label>
+                            <label class="col-sm-2 col-form-label">Medico: </label>
                             <div class="col-sm-6">
-                                <select  class="col-sm-12 browser-default custom-select" th:object="${medico}">
+                                <select  class="col-sm-12 browser-default custom-select" th:field="*{medico}">
                                     <option th:each="medico:${medico}" th:value="${medico.id}" th:text="${medico.nombre +'  '+ medico.apellido}"></option>
                                   
                                 </select>
@@ -53,20 +60,6 @@
                             </div>
                         </div>
 
-
-
-                        <!--         <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Horario del turno</label>
-                                    <div class="col-sm-6">
-                                        <select class="form-control form-control-sm col-sm-6" id="horaCita">
-                                            <option value="value1">MAÑANA</option>
-                                            <option value="value2">TARDE</option>
-        
-                                        </select>
-                                    </div>
-                                </div>
-                        -->
-
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Hora</label>
                             <div class="col-sm-6">
@@ -80,6 +73,24 @@
                             <div class="col-sm-6">
                                 <input type="text" th:field="*{adminCitaMotivo}" class="form-control" th:errorclass="'form-control alert-danger'" />
                                 <small class="form text text-danger" th:if="${#fields.hasErrors('adminCitaMotivo')}" th:errors="*{adminCitaMotivo}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Observacion: </label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{adminCitaObservacion}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('adminCitaObservacion')}" th:errors="*{adminCitaObservacion}"></small>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Estado de Cita: </label>
+                            <div class="col-sm-6">
+                                <select  class="col-sm-12 browser-default custom-select" th:field="*{estadoCita}">
+                                    <option th:each="estCit:${estadoCita}" th:value="${estCit.id}" th:text="${estCit.nombreEstado}"></option>
+                                  
+                                </select>
                             </div>
                         </div>
 

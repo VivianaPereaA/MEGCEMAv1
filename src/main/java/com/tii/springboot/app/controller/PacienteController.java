@@ -49,7 +49,7 @@ public class PacienteController {
         
         Page <Paciente> pacientes = pacienteService.findAllPaciente(pageRequest);
         
-        PageRender <Paciente> pageRender = new PageRender<Paciente>("/listarPacientes", pacientes);
+        PageRender <Paciente> pageRender = new PageRender<>("/listarPacientes", pacientes);
               
         model.addAttribute("titulo", "Listado de Pacientes");
         model.addAttribute("pacientes", pacienteService.findAllPaciente());

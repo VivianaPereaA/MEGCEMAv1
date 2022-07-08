@@ -28,7 +28,7 @@ public class Paciente implements Serializable {
         return this.nombre + " " + this.apellido;
     }
 
-    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas, List<Llegada> llegada, List<Diagnostico> diagnostico) {
+    public Paciente(Long id, String nombre, String apellido, String email, Date createAt, List<AdminCita> adminCita, List<Factura> facturas, List<Llegada> llegada, List<Diagnostico> diagnostico, List<Tratamiento> tratamiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -38,6 +38,7 @@ public class Paciente implements Serializable {
         this.facturas = facturas;
         this.llegada = llegada;
         this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
     }
 
     @Id
@@ -75,6 +76,9 @@ public class Paciente implements Serializable {
     
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
     private List<Diagnostico> diagnostico;
+    
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Tratamiento> tratamiento;
     
     public Paciente(){
         super();
@@ -156,6 +160,14 @@ public class Paciente implements Serializable {
         this.diagnostico = diagnostico;
     }
 
+    public List<Tratamiento> getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(List<Tratamiento> tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+    
     private static final long serialVersionUID = 1l;
 
 }

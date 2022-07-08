@@ -18,16 +18,6 @@
                     <form th:action="@{/formTratamiento}" th:object="${tratamiento}" method="post">
 
 
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Tipo de Enfermedad</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" th:field="*{tipoEnfermedad}" class="form-control" placeholder="Ingrese: nariz, oido o garganta" th:errorclass="'form-control alert-danger'" />
-                                            <small class="form text text-danger" th:if="${#fields.hasErrors('tipoEnfermedad')}" th:errors="*{tipoEnfermedad}"></small>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Enfermedad del Paciente</label>
                                         <div class="col-sm-6">

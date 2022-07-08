@@ -17,45 +17,70 @@
                     </div>
                     <form th:action="@{/formTratamiento}" th:object="${tratamiento}" method="post">
 
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Paciente: </label>
+                            <div class="col-sm-6">
+                                <select  class="col-sm-12 browser-default custom-select" th:field="*{paciente}">
+                                    <option th:each="pct:${paciente}" th:value="${pct.id}" th:text="${pct.nombre +'  '+ pct.apellido}"></option>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Enfermedad del Paciente</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" th:field="*{enfermedadPaciente}" class="form-control" th:errorclass="'form-control alert-danger'" />
-                                            <small class="form text text-danger" th:if="${#fields.hasErrors('enfermedadPaciente')}" th:errors="*{enfermedadPaciente}"></small>
-                                        </div>
-                                    </div>
+                                </select>
+                            </div>
+                        </div>
 
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Medicamentos</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" th:field="*{Medicamentos}" class="form-control" th:errorclass="'form-control alert-danger'" />
-                                            <small class="form text text-danger" th:if="${#fields.hasErrors('Medicamentos')}" th:errors="*{Medicamentos}"></small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="observaciones" class="col-sm-2 col-form-label">Observaciones: </label>
-                                        <div class="col-sm-6">
-                                            <textarea th:field="*{Observaciones}" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <div class="col-sm-6">
-                                            <input type="submit" value="Guardar Informacion" class="btn btn-primary"/>
-                                        </div>
-                                    </div>
-
-                                    <input type="hidden" th:field="*{id}" />
-                                    </form>
-                                </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Enfermedad del Paciente</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{enfermedadPaciente}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('enfermedadPaciente')}" th:errors="*{enfermedadPaciente}"></small>
                             </div>
                         </div>
 
 
-                        </body>
-                        </html>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Medicamentos</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{Medicamentos}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('Medicamentos')}" th:errors="*{Medicamentos}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Suspension de medicamento:</label>
+                            <div class="col-sm-6">
+                                <input type="number" th:field="*{medicamentosDosis}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('medicamentosDosis')}" th:errors="*{medicamentosDosis}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Dosis:</label>
+                            <div class="col-sm-6">
+                                <input type="number" th:field="*{dosis}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('dosis')}" th:errors="*{dosis}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="observaciones" class="col-sm-2 col-form-label">Observaciones: </label>
+                            <div class="col-sm-6">
+                                <textarea th:field="*{Observaciones}" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Guardar Informacion" class="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                        <input type="hidden" th:field="*{id}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

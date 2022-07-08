@@ -34,6 +34,10 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "est_usu_id", referencedColumnName = "id_est_us")
     private EstadoUsuario estadoUsuario;
     
+        @OneToOne
+    @JoinColumn(name = "det_usu_id", referencedColumnName = "usu_id")
+    private DetalleUsuario detalleUsuario;
+    
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -68,4 +72,18 @@ public class Usuario implements Serializable {
         this.estadoUsuario = estadoUsuario;
     }
 
+    public DetalleUsuario getDetalleUsuario() {
+        return detalleUsuario;
+    }
+
+    public void setDetalleUsuario(DetalleUsuario detalleUsuario) {
+        this.detalleUsuario = detalleUsuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", contraseña=" + contraseña + ", estadoUsuario=" + estadoUsuario + ", detalleUsuario=" + detalleUsuario + '}';
+    }
+
+    
 }

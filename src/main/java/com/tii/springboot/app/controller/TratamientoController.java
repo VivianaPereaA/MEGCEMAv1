@@ -7,6 +7,7 @@ package com.tii.springboot.app.controller;
 
 import com.tii.springboot.app.models.entity.Tratamiento;
 import com.tii.springboot.app.models.service.ITratamientoService;
+import com.tii.springboot.app.models.service.IPacienteService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,9 @@ public class TratamientoController {
     @Autowired
     private ITratamientoService tratamientoService;
 
+    @Autowired
+    private IPacienteService pacienteService;
+
     @RequestMapping(value = "/listarTratamiento", method = RequestMethod.GET)
     public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
@@ -54,16 +58,18 @@ public class TratamientoController {
     }
 
     @RequestMapping(value = "/formTratamiento")
-    public String crearTratamiento(Map<String, Object> model) {
+    public String crearTratamiento(Map<String, Object> model, Model model2) {
         Tratamiento tratamiento = new Tratamiento();
         model.put("tratamiento", tratamiento);
         model.put("titulo", "Formulario del Tratamiento");
+        model2.addAttribute("paciente", pacienteService.findAllPaciente());
         return "formTratamiento";
     }
 
     @RequestMapping(value = "/formTratamiento/{id}")
-    public String editarTratamiento(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+    public String editarTratamiento(@PathVariable(value = "id") Long id, Map<String, Object> model, Model model2, RedirectAttributes flash) {
         Tratamiento tratamiento = null;
+        model2.addAttribute("paciente", pacienteService.findAllPaciente());
 
         if (id > 0) {
             tratamiento = tratamientoService.findOneTratamiento(id);

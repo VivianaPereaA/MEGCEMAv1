@@ -18,38 +18,33 @@ import javax.persistence.Table;
  * @author VIVIANA CRISTINA
  */
 @Entity
-@Table(name = "estado_Citas")
+@Table(name = "estado_citas")
 public class EstadoCita implements Serializable{
-    
-    public EstadoCita(){
-        
-    }
-    
+
+    private static final long serialVersionUID = 1L;
+     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="estado_cita_id")
-    private int estadoCitaId;
+    @Column(name="id_estado_cita")
+    private int id;
     
-    //@NotEmpty
-    @Column(name="estado_cita_nombre_estado")
-    private String estadoCitaNombreEstado;
+    @Column(name="nombre_estado")
+    private String nombreEstado;
 
-    public int getEstadoCitId() {
-        return estadoCitaId;
+    public int getId() {
+        return id;
     }
 
-    public void setEstadoCitId(int estadoCitId) {
-        this.estadoCitaId = estadoCitId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEstadoCitaNombreEstado() {
-        return estadoCitaNombreEstado;
+    public String getNombreEstado() {
+        return nombreEstado;
     }
 
-    public void setEstadoCitaNombreEstado(String estadoCitaNombreEstado) {
-        this.estadoCitaNombreEstado = estadoCitaNombreEstado;
+    public void setNombreEstado(String nombreEstado) {
+        this.nombreEstado = nombreEstado;
     }
 
-
-    
 }

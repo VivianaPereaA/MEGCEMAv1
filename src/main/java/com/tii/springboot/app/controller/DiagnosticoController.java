@@ -7,6 +7,7 @@ package com.tii.springboot.app.controller;
 
 import com.tii.springboot.app.models.entity.Diagnostico;
 import com.tii.springboot.app.models.service.IDiagnosticoService;
+import com.tii.springboot.app.models.service.IPacienteService;
 import com.tii.springboot.app.util.paginator.PageRender;
 import java.util.Map;
 import javax.validation.Valid;
@@ -35,6 +36,9 @@ public class DiagnosticoController {
     
     @Autowired
     private IDiagnosticoService diagnosticoService;
+    
+   @Autowired
+   private IPacienteService pacienteService;
 
     @RequestMapping(value = "/listarDiagnostico", method = RequestMethod.GET)
     public String listarDiagnostico(@RequestParam(name="page", defaultValue ="0") int page, Model model) {
@@ -52,10 +56,11 @@ public class DiagnosticoController {
     }
 
     @RequestMapping(value = "/formDiagnostico")
-    public String crearDiagnostico(Map<String, Object> model) {
+    public String crearDiagnostico(Map<String, Object> model, Model model2) {
         Diagnostico diagnostico = new Diagnostico();
         model.put("diagnostico", diagnostico);
         model.put("titulo", "Formulario del Diagnostico");
+        model2.addAttribute("paciente",pacienteService.findAllPaciente());
         return "formDiagnostico";
     }
 

@@ -49,4 +49,9 @@ public class TurnoServiceImpl implements ITurnoService {
         return turnoDao.findById(idTurno).orElse(null);
     }
 
+    @Override
+    public void eliminarTurno(Long idTurno) {
+        turnoDao.deleteById(idTurno);
+    }
+
 }

@@ -88,4 +88,16 @@ public class TurnoController {
         return "redirect:listarTurno";
     }
     
+    @RequestMapping(value="/eliminarTurno/{idTurno}")
+    public String eliminarAdminCita(@PathVariable(value="idTurno") Long idTurno, RedirectAttributes flash){
+        
+        if(idTurno>0){
+            turnoService.eliminarTurno(idTurno);
+            flash.addFlashAttribute("success", "Cita eliminada con exito!");
+
+        }
+              
+        return "redirect:/listarTurno";
+    }
+    
 }

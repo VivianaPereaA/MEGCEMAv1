@@ -18,6 +18,16 @@
                     <form th:action="@{/formDiagnostico}" th:object="${diagnostico}" method="post">
 
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Paciente: </label>
+                            <div class="col-sm-6">
+                                <select  class="col-sm-12 browser-default custom-select" th:field="*{paciente}">
+                                    <option th:each="pct:${paciente}" th:value="${pct.id}" th:text="${pct.nombre +'  '+ pct.apellido}"></option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label" disabled>Sintomas del Paciente: </label>
                             <div class="col-sm-6">
                                 <input type="text" th:field="*{sintomasDiagnostico}" class="form-control" th:errorclass="'form-control alert-danger'"/>

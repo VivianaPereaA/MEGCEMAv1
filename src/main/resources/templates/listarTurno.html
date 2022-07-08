@@ -27,7 +27,6 @@ and open the template in the editor.
                             <th>hora de inicio</th>
                             <th>hora de fin</th>
                             <th>editar</th>
-                            <th>Ver Detalle</th>
                             <th>eliminar</th>
 
                         </tr>
@@ -35,14 +34,12 @@ and open the template in the editor.
                     <tbody>
                         <tr th:each="turno: ${turnos}">
                             
-                            <td><a class="btn btn-primary btn-xs"
-                            th:href="@{/verTurno/} + ${turno.idTurno}" th:text="${turno.idTurno}"></a></td>
                             <td th:text="${turno.fechaTurno}"></td>
                             <td th:text="${turno.horaInicioTurno}"></td>
                             <td th:text="${turno.horaFinTurno}"></td>
                             
                             <td><a class="btn btn-primary btn-s" th:href="@{/formTurno/} + ${turno.idTurno}" th:text="'editar'"></a></td>
-                            <td><a class="btn btn-warning btn-s" th:href="@{/verPaciente/} + ${turno.idTurno}" th:text="'Ver Detalle'"></a></td>
+                            <td><a class="btn btn-warning btn-s" th:href="@{/eliminarTurno/} + ${turno.idTurno}" th:text="'Eliminar'"></a></td>
 
                         </tr>
                     </tbody>

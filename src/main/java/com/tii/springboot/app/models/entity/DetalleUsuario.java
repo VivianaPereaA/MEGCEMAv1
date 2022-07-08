@@ -8,7 +8,11 @@ package com.tii.springboot.app.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -21,47 +25,45 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author usuario
  */
+@Entity
+@Table(name = "detalle_usuario")
 public class DetalleUsuario implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Column(name = "usu_id")
-    private Long usu_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle")
+    private Long id;
     
     @NotEmpty
-    @Column(name = "det_usu_nombre")
     private String detUsuNombre;
 
-    @Email
     @NotEmpty
-    @Column(name = "det_usu_correo")
+    @Email
     private String detUsuCorreo;
 
     @NotEmpty
-    @Column(name = "det_usu_direccion")
     private String detUsuDireccion;
 
-    @NotEmpty
-    @Column(name = "det_usu_telefono")
+    @NotEmpty   
     @Pattern(regexp = "\\d{9}")
     private String detUsuTelefono;
-
-    @Column(name = "det_usu_sexo")
+    
+    @NotEmpty
     private String detUsuSexo;
 
     @NotEmpty
-    @Column(name = "det_usu_tip_doc_numero")
     private String detUsuTipoDocNumero;
 
-    @Column(name = "det_usu_edad")
+    @NotNull
     private Integer detUsuEdad;
 
-    @Column(name = "det_usu_estado_civil")
+    @NotEmpty
     private String detUsuEstadoCivil;
 
-    @Column(name = "det_usu_fecha_nacimiento")
-    @Temporal(TemporalType.DATE)
     @NotNull
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date detUsuFechaNacimiento;
 
@@ -69,13 +71,12 @@ public class DetalleUsuario implements Serializable {
     @Column(name = "det_usu_lugar_nacimiento")
     private String detUsuLugarNacimiento;
 
-
-    public Long getUsu_id() {
-        return usu_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsu_id(Long usu_id) {
-        this.usu_id = usu_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDetUsuNombre() {
@@ -158,9 +159,11 @@ public class DetalleUsuario implements Serializable {
         this.detUsuLugarNacimiento = detUsuLugarNacimiento;
     }
 
+   
+
     @Override
     public String toString() {
-        return "DetalleUsuario{" + "usu_id=" + usu_id + ", detUsuNombre=" + detUsuNombre + ", detUsuCorreo=" + detUsuCorreo + ", detUsuDireccion=" + detUsuDireccion + ", detUsuTelefono=" + detUsuTelefono + ", detUsuSexo=" + detUsuSexo + ", detUsuTipoDocNumero=" + detUsuTipoDocNumero + ", detUsuEdad=" + detUsuEdad + ", detUsuEstadoCivil=" + detUsuEstadoCivil + ", detUsuFechaNacimiento=" + detUsuFechaNacimiento + ", detUsuLugarNacimiento=" + detUsuLugarNacimiento + '}';
+        return "DetalleUsuario{" + "usu_id=" + id + ", detUsuNombre=" + detUsuNombre + ", detUsuCorreo=" + detUsuCorreo + ", detUsuDireccion=" + detUsuDireccion + ", detUsuTelefono=" + detUsuTelefono + ", detUsuSexo=" + detUsuSexo + ", detUsuTipoDocNumero=" + detUsuTipoDocNumero + ", detUsuEdad=" + detUsuEdad + ", detUsuEstadoCivil=" + detUsuEstadoCivil + ", detUsuFechaNacimiento=" + detUsuFechaNacimiento + ", detUsuLugarNacimiento=" + detUsuLugarNacimiento + '}';
     }
 
 

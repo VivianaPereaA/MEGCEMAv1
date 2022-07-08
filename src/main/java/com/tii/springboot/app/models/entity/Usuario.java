@@ -16,10 +16,24 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
-
+    
+    private static final long serialVersionUID = 1L;
+    
+    public Usuario(Long id, String nombre, String contraseña, EstadoUsuario estadoUsuario, DetalleUsuario detalleUsuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+        this.estadoUsuario = estadoUsuario;
+        this.detalleUsuario = detalleUsuario;
+    }
+    
+    public Usuario(){
+        super();
+    }
+    
     @Id
-    @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long id;
     
     @NotEmpty
@@ -34,12 +48,10 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "est_usu_id", referencedColumnName = "id_est_us")
     private EstadoUsuario estadoUsuario;
     
-        @OneToOne
-    @JoinColumn(name = "det_usu_id", referencedColumnName = "usu_id")
+    @OneToOne
+    @JoinColumn(name = "detalle_id", referencedColumnName = "id_detalle")
     private DetalleUsuario detalleUsuario;
     
-    private static final long serialVersionUID = 1L;
-
     public Long getId() {
         return id;
     }
@@ -78,12 +90,6 @@ public class Usuario implements Serializable {
 
     public void setDetalleUsuario(DetalleUsuario detalleUsuario) {
         this.detalleUsuario = detalleUsuario;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", contraseña=" + contraseña + ", estadoUsuario=" + estadoUsuario + ", detalleUsuario=" + detalleUsuario + '}';
-    }
-
+    }    
     
 }

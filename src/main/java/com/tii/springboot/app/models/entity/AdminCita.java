@@ -62,6 +62,7 @@ public class AdminCita implements Serializable {
     @Column(name = "admin_cita_fecha")
     private Date adminCitaFecha;
 
+    @NotNull
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     @Column(name = "admin_cita_hora")
@@ -71,7 +72,6 @@ public class AdminCita implements Serializable {
     private String horaCita;
 
     @NotEmpty
-    @Size(min = 2, max = 255)
     @Column(name = "admin_cita_motivo")
     private String adminCitaMotivo;
 

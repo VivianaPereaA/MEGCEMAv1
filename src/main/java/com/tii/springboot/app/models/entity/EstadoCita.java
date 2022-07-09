@@ -26,18 +26,20 @@ public class EstadoCita implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_estado_cita")
-    private int id;
+    private Long id;
     
     @Column(name="nombre_estado")
     private String nombreEstado;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+    
 
     public String getNombreEstado() {
         return nombreEstado;

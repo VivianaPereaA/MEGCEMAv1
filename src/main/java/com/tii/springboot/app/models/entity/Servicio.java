@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "servicios")
@@ -26,9 +28,11 @@ public class Servicio {
     @Column(name = "id_Servicio")
     private Long id;
 
+    @NotEmpty(message = "El campo de nombre del servicio es obligatorio")
     @Column(name = "nombre_Servicio")
     private String nombre;
 
+    @NotNull(message = "El campo de precio del servicio es obligatorio")
     @Column(name = "precio_Servicio")
     private Double precio;
 

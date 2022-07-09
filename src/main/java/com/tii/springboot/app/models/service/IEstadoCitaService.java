@@ -21,8 +21,8 @@ public interface IEstadoCitaService {
 
     public void saveEstadoCita(EstadoCita estadoCita);
 
-    public EstadoCita findOneEstadoCita(int idEstadoCita);
+    public EstadoCita findOneEstadoCita(Long id);
 
-    public void eliminarEstadoCita(int idEstadoCita);
+    public void eliminarEstadoCita(Long id);
     
 }

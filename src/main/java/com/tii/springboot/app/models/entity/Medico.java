@@ -12,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,8 +49,6 @@ public class Medico implements Serializable {
 
     @NotEmpty
     @NotBlank
-    @Size(min = 4, max = 12)
-    @Pattern(regexp = "[a-zA-Z ]{4,12}")
     private String nombre;
 
     @NotEmpty
@@ -60,6 +56,7 @@ public class Medico implements Serializable {
     private String apellido;
 
     @NotEmpty
+    @NotBlank
     @Email
     private String email;
 
@@ -70,8 +67,8 @@ public class Medico implements Serializable {
     private Date createAt;
 
     @NotEmpty
-    @Pattern(regexp = "\\d{6}")
     @NotBlank
+    @Pattern(regexp = "\\d{6}")
     private String colegiatura;
 
     @NotEmpty

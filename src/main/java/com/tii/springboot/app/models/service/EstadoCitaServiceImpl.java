@@ -42,14 +42,14 @@ public class EstadoCitaServiceImpl implements IEstadoCitaService {
 
     @Override
     @Transactional(readOnly = true)
-    public EstadoCita findOneEstadoCita(int idEstadoCita) {
-        return estadoServiceDao.findById(idEstadoCita).orElse(null);
+    public EstadoCita findOneEstadoCita(Long id) {
+        return estadoServiceDao.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
-    public void eliminarEstadoCita(int idEstadoCita) {
-       estadoServiceDao.deleteById(idEstadoCita);
+    public void eliminarEstadoCita(Long id) {
+       estadoServiceDao.deleteById(id);
     }
       
     

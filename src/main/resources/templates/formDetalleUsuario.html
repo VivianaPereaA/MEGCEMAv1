@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout::head"></head>
+    <body>
+        <header th:replace="layout/layout::header"></header>
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+
+                    <div th:object="${detalleUsuario}" th:remove="tag">
+                        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                            <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    <form th:action="@{/formDetalleUsuario}" th:object="${detalleUsuario}" method="post">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{detUsuNombre}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuNombre')}" th:errors="*{detUsuNombre}"></small>     
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Correo</label>
+                            <div class="col-sm-6">
+                                <input type="email" th:field="*{detUsuCorreo}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuCorreo')}" th:errors="*{detUsuCorreo}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Direccion</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{detUsuDireccion}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuDireccion')}" th:errors="*{detUsuDireccion}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Telefono</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" th:field="*{detUsuTelefono}" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuTelefono')}" th:errors="*{detUsuTelefono}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Sexo</label>
+                            <div class="col-sm-6">
+                                <select class="custom-select bg-white text-dark" id="selectedSexo">
+                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="M">Masculino</option>
+                                    <option th:selected="${not #strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Edad</label>
+                            <div class="col-sm-6">
+                                <input type="number" min="24" class="form-control" th:field="*{detUsuEdad}" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuEdad')}" th:errors="*{detUsuEdad}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Estado Civil </label>
+                            <div class="col-sm-6">
+                                <select class="custom-select" id="civilSelect">
+                                    <option th:value="1" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">Soltero</option>
+                                    <option th:value="2" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Casado')}">Casado</option>
+                                    <option th:value="3" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Divorciado')}">Divorciado</option>
+                                    <option th:value="4" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Viudo')}">Viudo</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+                            <div class="col-sm-6">
+                                <input type="date" class="form-control" th:field="*{detUsuFechaNacimiento}" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuFechaNacimiento')}" th:errors="*{detUsuFechaNacimiento}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Lugar de Nacimiento</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" th:field="*{detUsuLugarNacimiento}" th:errorclass="'form-control alert-danger'"/>
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuLugarNacimiento')}" th:errors="*{detUsuLugarNacimiento}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Guardar Informacion" class="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                        <input type="hidden" th:field="*{id}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

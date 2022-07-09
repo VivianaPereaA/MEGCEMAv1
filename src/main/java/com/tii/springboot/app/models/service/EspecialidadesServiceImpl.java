@@ -43,13 +43,13 @@ public class EspecialidadesServiceImpl implements IEspecialidadesService{
 
     @Override
     @Transactional(readOnly = true)
-    public Especialidades findOneEspecialidades(Long idEspecialidades) {
-         return especialidadesDao.findById(idEspecialidades).orElse(null);
+    public Especialidades findOneEspecialidades(Long id) {
+         return especialidadesDao.findById(id).orElse(null);
     }
 
     @Override
-    public void eliminarEspecialidades(Long idEspecialidades) {
-        especialidadesDao.deleteById(idEspecialidades);
+    public void eliminarEspecialidades(Long id) {
+        especialidadesDao.deleteById(id);
     }
     
 }

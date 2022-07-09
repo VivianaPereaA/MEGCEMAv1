@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout::head">
+        <meta charset="UTF-8"/>
+        <title th:text="${titulo}">TODO write content</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+    <body>
+        <header th:replace="layout/layout::header"></header>
+
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        <a th:href="@{/formDetalleUsuario}" class="btn btn-primary btn-xs">Crear Usuario</a>
+                    </h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>nombre</th>
+                                <th>correo</th>
+                                <th>direccion</th>
+                                <th>telefono</th>
+                                <th>sexo</th>
+                                <th>edad</th>
+                                <th>estado civil</th>
+                                <th>fecha nacimiento</th>
+                                <th>lugar de nacimiento</th>
+                                <th>Acciones para el Usuario</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="DetalleUsuario: ${DetalleUsuarios}">
+
+                                <td th:text="${DetalleUsuario.detUsuNombre}"></td>
+                                <td th:text="${DetalleUsuario.detUsuCorreo}"></td>
+                                <td th:text="${DetalleUsuario.detUsuDireccion}"></td>
+                                <td th:text="${DetalleUsuario.detUsuTelefono}"></td>
+                                <td th:text="${DetalleUsuario.detUsuSexo}"></td>
+                                <td th:text="${DetalleUsuario.detUsuEdad}"></td>
+                                <td th:text="${DetalleUsuario.detUsuEstadoCivil}"></td>
+                                <td th:text="${DetalleUsuario.detUsuFechaNacimiento}"></td>
+                                <td th:text="${DetalleUsuario.detUsuLugarNacimiento}"></td>           
+                                <td><a class="btn btn-primary btn-s" th:href="@{/formDetalleUsuario/} + ${detalleUsuario.id}" th:text="'Modificar'"></a></td>
+                                <!--<td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${medico.id}" th:text="'Desocupado'" onclick="return confirm('¿Quieres llamar al siguiente paciente?');"></a></td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav th:replace="paginator-nav :: paginator"></nav>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+
+    </body>
+</html>

@@ -38,7 +38,6 @@ public class Diagnostico implements Serializable {
     private Long idDiagnostico;
 
     @NotEmpty
-    //@Size(min=4, max=12)
     private String sintomasDiagnostico;
 
     @NotEmpty
@@ -50,7 +49,6 @@ public class Diagnostico implements Serializable {
     @NotEmpty
     private String evaluacionDiagnostico;
 
-    @NotEmpty
     private String observacionesDiagnostico;
     
     @ManyToOne(optional = false)

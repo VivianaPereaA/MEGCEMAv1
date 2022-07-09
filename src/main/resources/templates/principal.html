@@ -479,14 +479,14 @@
                             <li class="header-menu">
                                 <span>Usuario</span>
                             </li>
-                            
+
                             <li>
-                                <a href="#">
+                                <a th:href="@{/formDetalleUsuario}" href="#">
                                     <i class="fa fa-tachometer-alt"></i>
-                                    <span>-Registrar Usuario-</span>
+                                    <span>Registrar Usuario</span>
                                 </a>
                             </li>
-                                                        
+
                             <li>
                                 <a href="#">
                                     <i class="fa fa-tachometer-alt"></i>
@@ -527,6 +527,13 @@
                                 <a th:href="@{/formTurno}" href="#">
                                     <i class="fa fa-tachometer-alt"></i>
                                     <span>Registrar Turnos</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a th:href="@{/formEspecialidades}" href="#">
+                                    <i class="fa fa-tachometer-alt"></i>
+                                    <span>Gestionar Especialidad</span>
                                 </a>
                             </li>
 
@@ -589,6 +596,14 @@
                                     <span>Gestionar Pago</span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a th:href="@{/listarEstadoCita}" href="#">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Estado Cita</span>
+                                </a>
+                            </li>
+
                             <li>
                                 <a th:href="@{/listarAdminCita}" href="#">
                                     <i class="fa fa-shopping-cart"></i>
@@ -636,7 +651,7 @@
                                 <div class="col-6">
                                     <div class="card" style="width: 18rem;">                              
                                         <div class="card-body">
-                                            <h5 class="card-title">Primera Consulta</h5>
+                                            <h5 class="card-title">Consulta Medica</h5>
                                             <p class="card-text">Al elegir esta opcion se le mostrara un formulario para que pueda agendar su primera cita llenando los campos.</p>
                                             <a href="#" class="btn btn-primary">Agendar Cita</a>
                                         </div>

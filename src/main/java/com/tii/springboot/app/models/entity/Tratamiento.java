@@ -58,6 +58,7 @@ public class Tratamiento implements Serializable {
     @Column(name = "medicamentos_dosis")
     private int medicamentosDosis;
     
+    @NotNull
     @Column(name = "dosis")
     private int dosis;
     

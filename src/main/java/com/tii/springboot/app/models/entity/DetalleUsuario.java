@@ -53,9 +53,6 @@ public class DetalleUsuario implements Serializable {
     @NotEmpty
     private String detUsuSexo;
 
-    @NotEmpty
-    private String detUsuTipoDocNumero;
-
     @NotNull
     private Integer detUsuEdad;
 
@@ -119,13 +116,6 @@ public class DetalleUsuario implements Serializable {
         this.detUsuSexo = detUsuSexo;
     }
 
-    public String getDetUsuTipoDocNumero() {
-        return detUsuTipoDocNumero;
-    }
-
-    public void setDetUsuTipoDocNumero(String detUsuTipoDocNumero) {
-        this.detUsuTipoDocNumero = detUsuTipoDocNumero;
-    }
 
     public Integer getDetUsuEdad() {
         return detUsuEdad;
@@ -159,12 +149,14 @@ public class DetalleUsuario implements Serializable {
         this.detUsuLugarNacimiento = detUsuLugarNacimiento;
     }
 
-   
-
     @Override
     public String toString() {
-        return "DetalleUsuario{" + "usu_id=" + id + ", detUsuNombre=" + detUsuNombre + ", detUsuCorreo=" + detUsuCorreo + ", detUsuDireccion=" + detUsuDireccion + ", detUsuTelefono=" + detUsuTelefono + ", detUsuSexo=" + detUsuSexo + ", detUsuTipoDocNumero=" + detUsuTipoDocNumero + ", detUsuEdad=" + detUsuEdad + ", detUsuEstadoCivil=" + detUsuEstadoCivil + ", detUsuFechaNacimiento=" + detUsuFechaNacimiento + ", detUsuLugarNacimiento=" + detUsuLugarNacimiento + '}';
+        return "DetalleUsuario{" + "id=" + id + ", detUsuNombre=" + detUsuNombre + ", detUsuCorreo=" + detUsuCorreo + ", detUsuDireccion=" + detUsuDireccion + ", detUsuTelefono=" + detUsuTelefono + ", detUsuSexo=" + detUsuSexo + ", detUsuEdad=" + detUsuEdad + ", detUsuEstadoCivil=" + detUsuEstadoCivil + ", detUsuFechaNacimiento=" + detUsuFechaNacimiento + ", detUsuLugarNacimiento=" + detUsuLugarNacimiento + '}';
     }
+
+   
+
+
 
 
 

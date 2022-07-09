@@ -18,7 +18,7 @@ public interface IEspecialidadesService {
 
     public void saveEspecialidades(Especialidades encuesta);
 
-    public Especialidades findOneEspecialidades(Long idEspecialidades);
+    public Especialidades findOneEspecialidades(Long id);
 
-    public void eliminarEspecialidades(Long idEspecialidades);
+    public void eliminarEspecialidades(Long id);
 }

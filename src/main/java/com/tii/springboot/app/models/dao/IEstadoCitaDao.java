@@ -10,6 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  *
  * @author Pe-Hs
  */
-public interface IEstadoCitaDao extends PagingAndSortingRepository<EstadoCita, Integer>{
+public interface IEstadoCitaDao extends PagingAndSortingRepository<EstadoCita, Long>{
     
 }

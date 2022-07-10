@@ -4,7 +4,7 @@
     <head th:replace="layout/layout::head"></head>
     <body>
         <header th:replace="layout/layout::header"></header>
-        <div class="container py-4">
+        <div class="container py-xl-5">
 
             <div class="card bg-light">
                 <div class="card-header" th:text="${titulo}"></div>
@@ -53,9 +53,11 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sexo</label>
                             <div class="col-sm-6">
+                                
                                 <select class="custom-select bg-white text-dark" th:field="*{detUsuSexo}" id="selectedSexo">
                                     <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="M">MASCULINO</option>
                                     <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">FEMENINO</option>
+ 
                                 </select>
                             </div>
                         </div>
@@ -71,12 +73,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Estado Civil </label>
                             <div class="col-sm-6">
+
                                 <select class="custom-select" th:field="*{detUsuEstadoCivil}" id="civilSelect">
                                     <option th:value="1" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">SOLTERO</option>
                                     <option th:value="2" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Casado')}">CASADO</option>
                                     <option th:value="3" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Divorciado')}">DIVORCIADO</option>
                                     <option th:value="4" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Viudo')}">VIUDO</option>
-                                </select>
+
                             </div>
                         </div>
 

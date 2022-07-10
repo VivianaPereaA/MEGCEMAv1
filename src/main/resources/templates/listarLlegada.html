@@ -32,7 +32,8 @@ and open the template in the editor.
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Paciente</th> 
+                                <!--<th>Paciente</th>-->
+                                 <th>Paciente</th> 
                                 <th>fecha</th>
                                 <th>hora</th>
                                 <th>Estado de la cita</th>
@@ -43,12 +44,13 @@ and open the template in the editor.
                         <tbody>
                             <tr th:each="llegada: ${llegadas}">
 
-                                <td th:text="${llegada.nombreLlegada}"></td>
+                                <!--<td th:text="${llegada.nombreLlegada}"></td>-->
+                                <td th:text="${llegada.paciente.nombre}"></td>
                                 <td th:text="${llegada.llegadaFecha}"></td>
                                 <td th:text="${llegada.llegadaHora}"></td>
-                                <td style="display: none;" th:text="${llegada.idLlegada}"></td>
-                                <td><a th:id="${llegada.idLlegada}" class="btn btn-primary btn-s" th:text="'Asistio'" th:onclick="call(this)"></a></td>
-                                <td><a th:id="${llegada.idLlegada}" class="btn btn-success btn-s" th:text="'Reprogramar'" th:onclick="call2(this)"></a></td>
+                                <td style="display: none;" th:text="${llegada.id}"></td>
+                                <td><a th:id="${llegada.id}" class="btn btn-primary btn-s" th:text="'Asistio'" th:onclick="call(this)"></a></td>
+                                <td><a th:id="${llegada.id}" class="btn btn-success btn-s" th:text="'Reprogramar'" th:onclick="call2(this)"></a></td>
                                 <!--<td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${llegada.idLlegada}" th:text="'Reprogramar'" onclick="return confirm('¿Quieres reprogramar la cita del paciente?');"></a></td>-->
 
 

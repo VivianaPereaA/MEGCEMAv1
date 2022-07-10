@@ -4,7 +4,7 @@
     <head th:replace="layout/layout::head"></head>
     <body>
         <header th:replace="layout/layout::header"></header>
-        <div class="container py-4">
+        <div class="container py-xl-5">
 
             <div class="card bg-light">
                 <div class="card-header" th:text="${titulo}"></div>
@@ -54,8 +54,9 @@
                             <label class="col-sm-2 col-form-label">Sexo</label>
                             <div class="col-sm-6">
                                 <select class="custom-select bg-white text-dark" id="selectedSexo">
+                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" >Seleccionar Sexo:  </option>
                                     <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="M">Masculino</option>
-                                    <option th:selected="${not #strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">Femenino</option>
+                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">Femenino</option>
                                 </select>
                             </div>
                         </div>
@@ -72,6 +73,7 @@
                             <label class="col-sm-2 col-form-label">Estado Civil </label>
                             <div class="col-sm-6">
                                 <select class="custom-select" id="civilSelect">
+                                    <option th:value="0" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">Seleccionar Estado Civil: </option>
                                     <option th:value="1" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">Soltero</option>
                                     <option th:value="2" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Casado')}">Casado</option>
                                     <option th:value="3" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Divorciado')}">Divorciado</option>

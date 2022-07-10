@@ -23,35 +23,38 @@ and open the template in the editor.
                         <a th:href="@{/formDetalleUsuario}" class="btn btn-primary btn-xs">Crear Usuario</a>
                     </h4>
                     <table class="table table-striped">
+                        <style>
+                            table,
+                            th{
+                                text-align: center
+                            }
+                            td {
+                                border-collapse: collapse;
+                            }
+                            td {
+                                padding: 5px;
+                                text-align: center;
+                            }
+                        </style>
                         <thead>
                             <tr>
 
-                                <th>nombre</th>
-                                <th>correo</th>
-                                <th>direccion</th>
-                                <th>telefono</th>
-                                <th>sexo</th>
-                                <th>edad</th>
-                                <th>estado civil</th>
-                                <th>fecha nacimiento</th>
-                                <th>lugar de nacimiento</th>
+                                <th>Nombre</th>
+                                <th>Telefono</th>
+                                <th>Sexo</th>
+                                <th>Edad</th>
                                 <th>Acciones para el Usuario</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="DetalleUsuario: ${DetalleUsuarios}">
+                            <tr th:each="deUs: ${detalleUsuario}">
 
-                                <td th:text="${DetalleUsuario.detUsuNombre}"></td>
-                                <td th:text="${DetalleUsuario.detUsuCorreo}"></td>
-                                <td th:text="${DetalleUsuario.detUsuDireccion}"></td>
-                                <td th:text="${DetalleUsuario.detUsuTelefono}"></td>
-                                <td th:text="${DetalleUsuario.detUsuSexo}"></td>
-                                <td th:text="${DetalleUsuario.detUsuEdad}"></td>
-                                <td th:text="${DetalleUsuario.detUsuEstadoCivil}"></td>
-                                <td th:text="${DetalleUsuario.detUsuFechaNacimiento}"></td>
-                                <td th:text="${DetalleUsuario.detUsuLugarNacimiento}"></td>           
-                                <td><a class="btn btn-primary btn-s" th:href="@{/formDetalleUsuario/} + ${detalleUsuario.id}" th:text="'Modificar'"></a></td>
+                                <td th:text="${deUs.detUsuNombre}"></td>
+                                <td th:text="${deUs.detUsuTelefono}"></td>
+                                <td th:text="${deUs.detUsuSexo}"></td>
+                                <td th:text="${deUs.detUsuEdad}"></td>          
+                                <td><a class="btn btn-primary btn-s" th:href="@{/formDetalleUsuario/} + ${deUs.id}" th:text="'Detalles'"></a></td>
                                 <!--<td><a class="btn btn-success btn-s" th:href="@{/eliminar/} + ${medico.id}" th:text="'Desocupado'" onclick="return confirm('¿Quieres llamar al siguiente paciente?');"></a></td>-->
 
                             </tr>

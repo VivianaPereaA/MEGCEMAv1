@@ -49,6 +49,7 @@ public class Diagnostico implements Serializable {
     @NotEmpty
     private String evaluacionDiagnostico;
 
+    @NotEmpty
     private String observacionesDiagnostico;
     
     @ManyToOne(optional = false)

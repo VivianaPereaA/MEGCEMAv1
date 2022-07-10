@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -23,6 +25,8 @@ public class Especialidades implements Serializable {
     private Long id;
     
     @Column(name = "nombre_esp")
+    @NotEmpty(message = "Debe ingresar Nombre de Especialidad")
+    @NotBlank(message = "No debe estar en Blanco")
     private String nombre_esp;
     
     

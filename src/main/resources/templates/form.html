@@ -32,6 +32,14 @@
                                 <small class="form text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
                             </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">DNI</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{docIdent}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                <small class="form text text-danger" th:if="${#fields.hasErrors('docIdent')}" th:errors="*{docIdent}"></small>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Colegiatura</label>

@@ -36,35 +36,35 @@ public class DetalleUsuario implements Serializable {
     @Column(name = "id_detalle")
     private Long id;
     
-    @NotEmpty
+    @NotEmpty(message = "Nombre de Paciente no debe estar Vacio")
     private String detUsuNombre;
 
-    @NotEmpty
+    @NotEmpty(message = "Email no debe estar Vacio")
     @Email
     private String detUsuCorreo;
 
-    @NotEmpty
+    @NotEmpty(message = "Domicio no debe estar Vacio")
     private String detUsuDireccion;
 
-    @NotEmpty   
+    @NotEmpty(message = "Telefono no debe estar Vacio")  
     @Pattern(regexp = "\\d{9}")
     private String detUsuTelefono;
     
-    @NotEmpty
+    @NotEmpty(message = "Debe elegir el Tipo de Sexo")
     private String detUsuSexo;
 
-    @NotNull
+    @NotNull(message = "Debe poner edad")
     private Integer detUsuEdad;
 
-    @NotEmpty
+    @NotEmpty(message = "Debe agregar Estado Civil")
     private String detUsuEstadoCivil;
 
-    @NotNull
+    @NotNull(message = "Debe Agregar Fecha de Nacimiento")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date detUsuFechaNacimiento;
 
-    @NotEmpty
+    @NotEmpty(message = "Debe poner Lugar de Nacimiento")
     @Column(name = "det_usu_lugar_nacimiento")
     private String detUsuLugarNacimiento;
 

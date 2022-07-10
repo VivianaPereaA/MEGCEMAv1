@@ -53,9 +53,9 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sexo</label>
                             <div class="col-sm-6">
-                                <select class="custom-select bg-white text-dark" id="selectedSexo">
-                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="M">Masculino</option>
-                                    <option th:selected="${not #strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">Femenino</option>
+                                <select class="custom-select bg-white text-dark" th:field="*{detUsuSexo}" id="selectedSexo">
+                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="M">MASCULINO</option>
+                                    <option th:selected="${#strings.equals(detalleUsuario.detUsuSexo,'M')}" value="F">FEMENINO</option>
                                 </select>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Edad</label>
                             <div class="col-sm-6">
-                                <input type="number" min="24" class="form-control" th:field="*{detUsuEdad}" th:errorclass="'form-control alert-danger'"/>
+                                <input type="number" class="form-control" th:field="*{detUsuEdad}" th:errorclass="'form-control alert-danger'"/>
                                 <small class="form text text-danger" th:if="${#fields.hasErrors('detUsuEdad')}" th:errors="*{detUsuEdad}"></small>
                             </div>
                         </div>
@@ -71,11 +71,11 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Estado Civil </label>
                             <div class="col-sm-6">
-                                <select class="custom-select" id="civilSelect">
-                                    <option th:value="1" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">Soltero</option>
-                                    <option th:value="2" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Casado')}">Casado</option>
-                                    <option th:value="3" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Divorciado')}">Divorciado</option>
-                                    <option th:value="4" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Viudo')}">Viudo</option>
+                                <select class="custom-select" th:field="*{detUsuEstadoCivil}" id="civilSelect">
+                                    <option th:value="1" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Soltero')}">SOLTERO</option>
+                                    <option th:value="2" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Casado')}">CASADO</option>
+                                    <option th:value="3" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Divorciado')}">DIVORCIADO</option>
+                                    <option th:value="4" th:selected="${#strings.equalsIgnoreCase(detalleUsuario.detUsuEstadoCivil,'Viudo')}">VIUDO</option>
                                 </select>
                             </div>
                         </div>

@@ -22,7 +22,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -47,33 +46,38 @@ public class Medico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "Debe ingresar el Nombre")
+    @NotBlank(message = "No debe estar en Blanco")
     private String nombre;
 
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "Debe Ingresar el Apellido")
+    @NotBlank(message = "No debe estar en Blanco")
     private String apellido;
+    
+    @NotEmpty(message = "Debe Ingresar DNI")
+    @NotBlank(message = "No debe estar en Blanco")
+    @Pattern(regexp = "\\d{8}")
+    private String docIdent;
 
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "Debe ingresar Email")
+    @NotBlank(message = "No debe estar en Blanco")
     @Email
     private String email;
 
-    @NotNull
+    @NotNull(message = "Debe Ingresar  Fecha de Nacimiento")
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "El numero de Colegiatura no debe estar Vacio")
+    @NotBlank(message = "No debe estar en Blanco")
     @Pattern(regexp = "\\d{6}")
     private String colegiatura;
 
-    @NotEmpty
+    @NotEmpty(message = "Debe Ingresar Numero de Telefono")
     @Pattern(regexp = "\\d{9}")
-    @NotBlank
+    @NotBlank(message = "No debe estar en Blanco")
     private String telefono;
 
     @OneToMany(mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -112,6 +116,14 @@ public class Medico implements Serializable {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getDocIdent() {
+        return docIdent;
+    }
+
+    public void setDocIdent(String docIdent) {
+        this.docIdent = docIdent;
     }
 
     public String getEmail() {

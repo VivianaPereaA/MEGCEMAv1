@@ -540,21 +540,29 @@
                             <li class="header-menu">
                                 <span>Paciente</span>
                             </li>
+                            
                             <li>
+                                <a th:href="@{/formPaciente}" href="#">
+                                    <i class="fa fa-tachometer-alt"></i>
+                                    <span>Registrar Paciente</span>
+                                </a>
+                            </li>
+                           
+                            <li class="header-menu">
+                                <span>Recepcionista</span>
+                            </li>
+
+                             <li>
                                 <a th:href="@{/formAdminCita}" href="#">
                                     <i class="fa fa-tachometer-alt"></i>
                                     <span>Registrar Cita</span>
                                 </a>
                             </li>
-
-                            <li class="header-menu">
-                                <span>Recepcionista</span>
-                            </li>
-
+                            
                             <li>
                                 <a th:href="@{/listarLlegada}" href="#" >
                                     <i class="far fa-gem"></i>
-                                    <span>Registrar estado de cita</span>
+                                    <span>Registrar Estado de Cita</span>
                                 </a>
                             </li>
 

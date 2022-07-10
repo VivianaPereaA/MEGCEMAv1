@@ -35,7 +35,7 @@
                             <label class="col-sm-2 col-form-label">Paciente: </label>
                             <div class="col-sm-6">
                                 <select  class="col-sm-12 browser-default custom-select" th:field="*{paciente}">
-                                    <option th:each="pct:${paciente}" th:value="${pct.id}" th:text="${pct.nombre +'  '+ pct.apellido}"></option>
+                                    <option th:each="pct:${paciente}" th:value="${pct.id}" th:text="${ pct.docIdent + ' - '+pct.nombre +'  '+ pct.apellido}"></option>
                                   
                                 </select>
                             </div>

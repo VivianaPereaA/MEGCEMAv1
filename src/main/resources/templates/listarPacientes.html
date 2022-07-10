@@ -15,26 +15,33 @@ and open the template in the editor.
                 <div class="card-header" th:text="${titulo}"></div>
                 <div class="card-body">
 
-                        <h4 class="card-title">
-                            <a th:href="@{/formPaciente}" class="btn btn-primary btn-xs">Registrar nuevo paciente</a>
-                        </h4>     
+                    <h4 class="card-title">
+                        <a th:href="@{/formPaciente}" class="btn btn-primary btn-xs">Registrar nuevo paciente</a>
+                    </h4>     
 
-                    <table class="table table-striped table-bordered">
-                        <thead class="thead-dark">
+                    <table class="table table-striped table-hover">
+                        <style>
+                            table,
+                            th{
+                                text-align: center
+                            }
+                            td {
+                                border-collapse: collapse;
+                            }
+                            td {
+                                padding: 5px;
+                                text-align: center;
+                            }
+                        </style>
+                        <thead>
                             <tr>
 
-                                <!-- <th>Ver Detalle</th>-->
-                                <th>nombre</th>
-                                <th>apellido</th>
-                                <!--<th>email</th>-->
-                                <th>fecha de nacimiento</th> 
-                                <!--<th>fctura</th>-->
-                                <!--  <th>Registrar Cita</th>-->
-
-                                <!--    <th>editar</th>-->
+                                <th>DNI</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Fecha de Nacimiento</th> 
                                 <th>Asignar Tratamiento</th>
                                 <th>Determinar Diagnostico</th>
-
                                 <th>Generar Factura</th>
 
                             </tr>
@@ -44,11 +51,12 @@ and open the template in the editor.
 
                                 <!--    <td><a class="btn btn-primary btn-xs"
                                     th:href="@{/verPaciente/} + ${paciente.id}" th:text="${paciente.id}"></a></td> -->
+                                <td th:text="${paciente.docIdent}"></td>
                                 <td th:text="${paciente.nombre}"></td>
                                 <td th:text="${paciente.apellido}"></td>
                                 <!--<td th:text="${paciente.email}"></td>-->
                                 <td th:text="${paciente.createAt}"></td>
-<!--<td><a class="btn btn-success btn-s" th:href="@{'/factura/formFactura/' + ${paciente.id}}" th:text="'Crear Factura'"></a></td>-->
+                                <!--<td><a class="btn btn-success btn-s" th:href="@{'/factura/formFactura/' + ${paciente.id}}" th:text="'Crear Factura'"></a></td>-->
                                 <!-- <td><a class="btn btn-primary btn-s" th:href="@{/formAdminCita/} + ${paciente.id}" th:text="'Registrar nueva cita'" ></a></td> -->
                                 <!--    <td><a class="btn btn-success btn-s" th:href="@{'/factura/formFactura/' + ${paciente.id}}" th:text="'Crear Factura'"></a></td>-->
 
